@@ -1,0 +1,82 @@
+<style>
+
+.footer .footer-nav ul li {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
+
+footer div,
+.footer nav>ul a:not(.btn) {
+  font-size: 11px;
+  font-weight: 400;
+  color: white;
+}
+
+.credits img {
+  width: 50px;
+  height: 50px;
+}
+
+</style>
+
+<footer class="footer footer-black pt-2 pb-2" style="position: static;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <nav class="footer-nav" style="margin-left: 84px; line-height: 20px;">
+          <ul>
+            <li><a href="/user/guide/terms" style="color: #bdbdbd;">이용약관</a></li>
+            <li><a href="/user/guide/privacy" style="color: #bdbdbd;">개인정보처리방침</a></li>
+            <li><a href="/user/guide/store" style="color: #bdbdbd">입점 안내</a></li>
+            <li><a href="/user/guide/advertisement" style="color: #bdbdbd;">광고 안내</a></li>
+          </ul>
+          <div class="row ml-2 mt-0" style="line-height: 18px;">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+              <div class="row">
+                <div style="float: left;"><img src="/freemold/img/footerIconCenter.png" style="width: 35px; height: 35px;"/></div>
+                <div style="float: left; margin-left: 5px; color: #bdbdbd;">고객센터<br/>031-478-3025</div>
+              </div>
+              <br/>
+              <div class="row" style="color: #bdbdbd;">평일 오전 : 10:00 ~ 오후 06:00</div>
+              <div class="row" style="color: #bdbdbd;">점심 오후 : 12:30 ~ 오후 01:30</div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 pl-0" style="color: #bdbdbd;">
+              세진액자 대표이사 : 정재석<br/>
+              경기도 안양시 동안구 흥안대로 415 (평촌동, 두산벤처다임) 809호<br/>
+              사업자 등록번호 : 214-86-89423<br/>
+              통신판매업신고번호 : 안양 제2412호<br/>
+              Copyright 세진액자 All rights reserved
+            </div>
+          </div>
+          <div class="row ml-2 mt-3" style="color: #bdbdbd;">
+            세진액자 사이트의 콘텐츠, UI 등에 대한 무단 복제, 전송, 배포, 스크래핑 등의 행위는 저작권법, 콘텐츠 산업 진흥법 등에 의하여 엄격히 금지 됩니다.
+          </div>
+        </nav>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 mt-2">
+        <div class="row" style="margin-left: 100px;">
+            TODAY&nbsp;:&nbsp;<sapn class="today-cnt">0</sapn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            TOTAL&nbsp;:&nbsp;<span class="total-cnt">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            제품수&nbsp;:&nbsp;<span class="product-cnt">0</span>
+        </div>
+        <div class="row" style="margin-top: 80px; margin-left: 260px;">
+            <a href="https://www.instagram.com/freemold.net_official/" target="_blank"><img src="/freemold/img/footerIconInsta.png" style="width: 30px; height: 30px"/></a>
+            <a href="https://www.youtube.com/channel/UCJ0Hyge0chM8DS7O8eqQoKw?view_as=subscriber" target="_blank"><img src="/freemold/img/footerIconYoutube.png" style="width: 30px; height: 30px"/></a>
+            <a href="https://www.facebook.com/%ED%94%84%EB%A6%AC%EB%AA%B0%EB%93%9C%EB%8B%B7%EB%84%B7-108284943864077/" target="_blank"><img src="/freemold/img/footerIconFace.png" style="width: 30px; height: 30px"/></a>
+            <a href="http://pf.kakao.com/_Mxoesxb" target="_blank"><img src="/freemold/img/footerIconKakao.png" style="width: 30px; height: 30px"/></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+  
+  $.post("/user/footerStat.json", function (statMap) {
+      $(".today-cnt").text(statMap.todayVisitCount.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+      $(".total-cnt").text(statMap.totalVisitCount.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+      $(".product-cnt").text(statMap.productCount.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+  });
+  
+</script>
