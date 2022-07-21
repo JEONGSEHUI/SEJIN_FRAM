@@ -1,556 +1,984 @@
-<script src="/paper/design/assets/js/core/jquery.min.js" type="text/javascript"></script>
-<script src="/paper/design/assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="/paper/design/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="/paper/design/assets/js/plugins/bootstrap-switch.js"></script>
-<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="/paper/design/assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-<script src="/paper/design/assets/js/plugins/moment.min.js"></script><!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <!--  Plugin for Sweet Alert -->
-  <script src="/paper/dashboard/assets/js/plugins/sweetalert2.min.js"></script>
-<script src="/paper/design/assets/js/plugins/bootstrap-tagsinput.js"></script>
-<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="/paper/design/assets/js/plugins/bootstrap-selectpicker.js" type="text/javascript"></script>
-<!--	Plugin for Datetimepicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="/paper/design/assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-<!--  Plugin for presentation page - isometric cards  -->
-<script src="/paper/design/assets/js/plugins/presentation-page/main.js"></script>
-<!--  Vertical nav - dots -->
-<!--  Photoswipe files -->
-<script src="/paper/design/assets/js/plugins/photo_swipe/photoswipe.min.js"></script>
-<script src="/paper/design/assets/js/plugins/photo_swipe/photoswipe-ui-default.min.js"></script>
-<script src="/paper/design/assets/js/plugins/photo_swipe/init-gallery.js"></script>
-<!--  for Jasny fileupload -->
-<script src="/paper/design/assets/js/plugins/jasny-bootstrap.min.js"></script>
-<!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-<script src="/paper/design/assets/js/paper-kit.js?v=2.3.1" type="text/javascript"></script>
-<script src="/jquery-ui-1.12.1.custom/jquery-ui.min.js" type="text/javascript"></script>
-<!--  Google Maps Plugin    -->
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
-<!-- NAVER Maps -->
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=uu53zthem4&submodules=geocoder"></script>
-<script src="/freemold/js/common.js"></script>
-
-<script type="text/javascript">
-    var categoryMold = "";
-    var categoryCompany = "";
-    var categoryOemodm = "";
-
-    var allCategoryMold = "";
-    var allCategoryMold2 = "";
-    var allCategoryCompany = "";
-    var allCategoryOemodm = "";
-    var allCategoryOemodm2 = "";
-
-    var allCategoryMoldLeaf = "";
-    var allCategoryMoldLeaf2 = "";
-
-    var categoryMoldMenu = "";
-    var categoryCompanyMenu = "";
-    var categoryOemodmMenu = "";
-
-    var categoryMoldMenuLeaf = "";
-    var categoryCompanyMenuLeaf = "";
-
-    var categoryMoldUrl = "/user/freemold/search";
-    var categoryCompanyUrl = "/user/store/search";
-    var categoryOemodmUrl = "/user/oemodm/index";
-
-    var currentQuickMenuPosition = parseInt($("#quick-menu").css("top"));
-
-    $.post("/user/category.json", function (categoryList) {
-        $.post("/user/categoryBanner.json", function (banner) {
-            categoryMold = categoryMold + '<ul class="category">';
-            categoryCompany = categoryCompany + '<ul class="category">';
-            categoryOemodm = categoryOemodm + '<ul class="category">';
-
-            categoryMoldMenuLeaf = categoryMoldMenuLeaf + '<div class="search-category-row">'
-                                                        + '<div class="row">'
-                                                        + '<div class="col-sm-2 search-parent-category">기타</div>'
-                                                        + '<div class="col-sm-10">'
-                                                        + '<div class="row">';
-
-            categoryCompanyMenuLeaf = categoryCompanyMenuLeaf + '<div class="search-category-row">'
-                                                            + '<div class="row">'
-                                                            + '<div class="col-sm-2 search-parent-category">기타</div>'
-                                                            + '<div class="col-sm-10">'
-                                                            + '<div class="row">';
-                                                            
-            categoryOemodmMenu = categoryOemodmMenu + '<div class="search-category-row">'
-                                                    + '<div class="row">';
-
-            var categoryMoldCnt = 1;
-            var allCategoryMoldCnt = 0;
-            var allCategoryMoldLeafCnt = 0;
-
-            for (i=0 ; i<categoryList.length ; i++) {
-                if(categoryList[i].cate == 174 || categoryList[i].cate == 274 || categoryList[i].cate === 294) {
-                    continue;
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<body style="">
+    <span itemscope="" itemtype="http://schema.org/Organization">
+        <link itemprop="url" href="https://fallinfuni.com">
+        <a itemprop="sameAs" href="http://blog.naver.com/fallinfuni"></a>
+        <a itemprop="sameAs" href="https://www.instagram.com/fallinfuni"></a>
+        <a itemprop="sameAs" href="https://smartstore.naver.com/fallinfuni"></a>
+    </span>
+    <link rel="canonical" href="http://fallinfuni.com/index.html">
+    <link rel="canonical" href="http://fallinfuni.com/">
+    <link rel="alternate" href="http://m.fallinfuni.com/">
+    <meta property="og:url" content="http://fallinfuni.com/">
+    <meta property="og:title" content="폴인퍼니">
+    <meta property="og:description" content="감성 디자인가구 폴인퍼니">
+    <meta property="og:site_name" content="폴인퍼니">
+    <meta property="og:type" content="website">
+    <meta http-equiv="ImageToolbar" content="No">
+    <script type="text/javascript" src="/app/Eclog/js/cid.generate.js?vs=c15260d16a95f7dc2b23a56d67c34330"></script>
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+    <script
+        type="text/javascript">var CAFE24API = 
+        { instance: [], MALL_ID: 'fallinfuni01', SHOP_NO: 1, init: function (appInfo) { if (typeof appInfo == 'object') { if (appInfo.hasOwnProperty('client_id')) { var appKey = appInfo.client_id; } } else { var appKey = appInfo; } if (appKey) { if (!this.instance[appKey]) { CAFE24API.clientId = appKey; if (appInfo.hasOwnProperty('version')) { CAFE24API.version = appInfo.version; } var copyObject = CAFE24API.constructor(); for (var attr in CAFE24API) { if (CAFE24API.hasOwnProperty(attr)) { copyObject[attr] = CAFE24API[attr]; } } this.instance[appKey] = copyObject; } return this.instance[appKey]; } }, initializeXhr: function () { try { return new XMLHttpRequest(); } catch (error) { return new window.ActiveXObject('Microsoft.XMLHTTP'); } }, fullPath: function (url) { return 'https://fallinfuni01.cafe24api.com' + url; }, getMemberID: function (callback) { if (!CAPP_ASYNC_METHODS.IS_LOGIN) { callback(null); } else { callback(CAPP_ASYNC_METHODS.AppCommon.getMemberID()); } }, getEncryptedMemberId: function (client_id, callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getEncryptedMemberId(client_id)); }, getMemberInfo: function (callback) { callback({ 'id': CAPP_ASYNC_METHODS.AppCommon.getMemberInfo() }); }, getCustomerIDInfo: function (callback) { if (!CAFE24API.__scopeErr(callback, 'application')) { return; } callback(null, { 'id': CAPP_ASYNC_METHODS.AppCommon.getCustomerIDInfo() }); }, getCustomerInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'customer': CAPP_ASYNC_METHODS.AppCommon.getCustomerInfo() }); }, getMileageInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'mileage': CAPP_ASYNC_METHODS.AppCommon.getMileageInfo() }); }, getPointInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'point': CAPP_ASYNC_METHODS.AppCommon.getPointInfo() }); }, getDepositInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'deposit': CAPP_ASYNC_METHODS.AppCommon.getDepositInfo() }); }, getCreditInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'customer')) { return; } callback(null, { 'credit': CAPP_ASYNC_METHODS.AppCommon.getCreditInfo() }); }, getCartList: function (callback) { if (!CAFE24API.__scopeErr(callback, 'personal')) { return; } callback(null, { 'carts': CAPP_ASYNC_METHODS.AppCommon.getCartList() }); }, getCartInfo: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'personal')) { return; } callback(null, { 'cart': CAPP_ASYNC_METHODS.AppCommon.getCartInfo() }); }, getCartItemList: function (callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } callback(null, { 'items': CAPP_ASYNC_METHODS.AppCommon.getCartItemList() }); }, getCartCount: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'personal')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getCartCount()); }, getCouponCount: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'promotion')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getCouponCount()); }, getWishCount: function (callback) { if (!CAFE24API.__chkValidSessionScope(callback, 'personal')) { return; } callback(null, CAPP_ASYNC_METHODS.AppCommon.getWishCount()); }, getShopInfo: function (callback) { if (!CAFE24API.__scopeErr(callback, 'store')) { return; } callback(null, { 'shop': CAPP_ASYNC_METHODS.AppCommon.getShopInfo() }); }, addCurrentProductToCart: function (mall_id, time, app_key, member_id, hmac, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.addCurrentProductToCart(mall_id, time, app_key, member_id, hmac).then(function (data) { callback(null, { 'cart': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error('422'), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, precreateOrder: function (mall_id, time, app_key, member_id, hmac, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.precreateOrder(mall_id, time, app_key, member_id, hmac).then(function (data) { callback(null, { 'order': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error('422'), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, getOrderItemList: function (start_date, end_date, order_status, page, count, order_id, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.getOrderItemList(start_date, end_date, order_status, page, count, order_id).then(function (data) { callback(null, { 'items': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, getOrderDetailInfo: function (shop_no, order_id, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.getOrderDetailInfo(shop_no, order_id).then(function (data) { callback(null, { 'orders': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, getClaimableItemList: function (order_id, customer_service_type, callback) { if (!CAFE24API.__scopeErr(callback, 'order')) { return; } CAPP_ASYNC_METHODS.AppCommon.getClaimableItemList(order_id, customer_service_type).then(function (data) { callback(null, { 'items': data }); }).catch(function (data) { if (data) { callback(new Error('422'), { 'error': { code: data.code, message: data.message } }); } else { callback(new Error(422), { 'error': { code: 422, message: 'This sdk is not available on the current page' } }); } }); }, get: function (url, callback) { return CAFE24API.complete('GET', url, this, null, callback); }, post: function (url, params, callback) { return CAFE24API.complete('POST', url, this, params, callback); }, put: function (url, params, callback) { return CAFE24API.complete('PUT', url, this, params, callback); }, delete: function (url, callback) { return CAFE24API.complete('DELETE', url, this, null, callback); }, complete: function (method, url, obj, params, callback) { var xhr = CAFE24API.sendXhr(method, url, obj, params, callback); xhr.onreadystatechange = function () { if (xhr.readyState === XMLHttpRequest.DONE) { if (xhr.status >= 200 && xhr.status <= 208) { callback(null, JSON.parse(xhr.responseText)); } else { callback(new Error(xhr.status), JSON.parse(xhr.responseText)); } } }; }, sendXhr: function (method, url, obj, params, callback) { if (method !== 'POST') { var url = obj.fullPath(url); } var xhr = obj.initializeXhr(); var queryVars = {}; if (obj.clientId) queryVars['cafe24_app_key'] = obj.clientId; if (obj.version) queryVars['cafe24_api_version'] = obj.version; if (params === null) { var seperator = url.indexOf('?') == -1 ? '?' : '&'; var queryString = []; for (var key in queryVars) { queryString.push(key + '=' + queryVars[key]); } if (queryString.length > 0) { url = url + seperator + queryString.join('&'); } } xhr.open(method, url, true); if (typeof params == 'object' && params !== null) { xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=utf-8'); for (var key in queryVars) { params[key] = queryVars[key]; } params = 'formData=' + JSON.stringify(params); } xhr.send(params || null); return xhr; }, __sessionErr: function (callback) { callback(new Error(403), { 'error': { code: 403, message: 'Failed to get session. Only available when log in.' } }); }, __scopeErr: function (callback, scope) { if (typeof CAFE24.APPSCRIPT_SDK_DATA != "undefined" && jQuery.inArray(scope, CAFE24.APPSCRIPT_SDK_DATA) > -1) { return true; } callback(new Error(403), { 'error': { code: 403, message: 'You do not have the necessary authority(scope) to use the SDK.' } }); }, __chkValidSessionScope: function (callback, scope) { if (!CAPP_ASYNC_METHODS.IS_LOGIN) { CAFE24API.__sessionErr(callback); return false; } if (!CAFE24API.__scopeErr(callback, scope)) { return false; } return true; } }; </script>
+    <script type="text/javascript">
+        window.CAFE24 = window.CAFE24 || {};
+        CAFE24.MANIFEST_CACHE_REVISION = '2207201121';
+        CAFE24.getDeprecatedNamespace = function (sDeprecatedNamespace, sSupersededNamespace) {
+            var sNamespace = sSupersededNamespace
+                ? sSupersededNamespace
+                : sDeprecatedNamespace.replace(/^EC_/, '');
+            return CAFE24[sNamespace];
+        }
+        CAFE24.FRONT_LANGUAGE_CODE = "ko_KR";
+        CAFE24.MOBILE = false;
+        CAFE24.MOBILE_DEVICE = false;
+        CAFE24.MOBILE_USE = true;
+        var EC_MOBILE = CAFE24.MOBILE;
+        var EC_MOBILE_DEVICE = CAFE24.MOBILE_DEVICE;
+        var EC_MOBILE_USE = CAFE24.MOBILE_USE;
+        CAFE24.SKIN_CODE = "skin3";
+        CAFE24.FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = { "common_member_id_crypt": "", "common_member_email": false, "common_member_zipcode": false, "common_member_mobile": false };
+        var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = CAFE24.getDeprecatedNamespace('EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA');
+        CAFE24.SDE_SHOP_NUM = 1; CAFE24.SHOP = {
+            getLanguage: function () { return "ko_KR"; }, getCurrency: function () { return "KRW"; }, getFlagCode: function () { return "KR"; }, getTimezone: function () { return "Asia/Seoul" }, getDateFormat: function () { return "Y-m-d" }, isMultiShop: function () { return false; }, isDefaultShop: function () { return true; }, isDefaultLanguageShop: function (sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); }, isKR: function () { return true; }, isUS: function () { return false; }, isJP: function () { return false; }, isCN: function () { return false; }, isTW: function () { return false; }, isES: function () { return false; }, isPT: function () { return false; }, isVN: function () { return false; }, isPH: function () { return false; }, getCountryAndLangMap: function () {
+                return {
+                    "KR": "ko_KR",
+                    "US": "en_US",
+                    "JP": "ja_JP",
+                    "CN": "zh_CN",
+                    "TW": "zh_TW",
+                    "VN": "vi_VN",
+                    "PH": "en_PH"
                 }
-
-                if(categoryList[i].mold == 'Y') {
-                    categoryMold = categoryMold + '<li style= "border-bottom: 0.5px solid #585858;">';
-                    categoryMold = categoryMold + '<a href="' + categoryMoldUrl + '?firstCategory=' + categoryList[i].cate + '" class="dropdown-item" style="color: white; padding-top: 3px; padding-bottom: 3px; font-weight: 100;">' + categoryList[i].cateName + '</a>';
-                    if(categoryList[i].type == 'DIRECTORY') {
-                        categoryMold = categoryMold + makeCategory(categoryList[i], categoryList, "MOLD", banner[categoryMoldCnt]);
+            }, isLanguageShop: function (sLanguageCode) { return sLanguageCode === "ko_KR"; }, getDefaultShopNo: function () { return 1; }, getProductVer: function () { return 2; }, isSDE: function () { return true; }, isMode: function () { return false; }, getModeName: function () { return false; }, isMobileAdmin: function () { return false; }, isNewProMode: function () { return false; }, isExperienceMall: function () { return false; }, getAdminID: function () { return '' }, getMallID: function () { return 'fallinfuni01' }, getCurrencyFormat: function (sPriceTxt, bIsNumberFormat) {
+                sPriceTxt = String(sPriceTxt);
+                var aCurrencySymbol = ["", "\uc6d0", false];
+                if (typeof CAFE24.SHOP_PRICE !== 'undefined' && isNaN(sPriceTxt.replace(/[,]/gi, '')) === false && bIsNumberFormat === true) {
+                    // bIsNumberFormat 사용하려면 Ui(':libUipackCurrency')->plugin('Currency') 화폐 라이브러리 추가 필요
+                    sPriceTxt = CAFE24.SHOP_PRICE.toShopPrice(sPriceTxt.replace(/[,]/gi, ''), true, CAFE24.SDE_SHOP_NUM);
+                }
+                try {
+                    var sPlusMinusSign = (sPriceTxt.toString()).substr(0, 1);
+                    if (sPlusMinusSign === '-' || sPlusMinusSign === '+') {
+                        sPriceTxt = (sPriceTxt.toString()).substr(1);
+                        return sPlusMinusSign + aCurrencySymbol[0] + sPriceTxt + aCurrencySymbol[1];
                     } else {
-                        categoryMold = categoryMold + '<ul class="child-category">';
-                        if(!(typeof banner[categoryMoldCnt] == "undefined" || banner[categoryMoldCnt] == null || banner[categoryMoldCnt] == "")) {
-                            categoryMold = categoryMold + '<div class="menu-and-banner-right">';
-                            categoryMold = categoryMold + categoryBannerImage(banner[categoryMoldCnt]);
-                            categoryMold = categoryMold + '</div>';
-                        }
-                        categoryMold = categoryMold + '</ul>';
+                        return aCurrencySymbol[0] + sPriceTxt + aCurrencySymbol[1];
                     }
-                    categoryMold = categoryMold + '</li>';
-
-                    if(categoryList[i].type == 'DIRECTORY') {
-                        if(allCategoryMoldCnt % 5 == 0) {
-                            allCategoryMold = allCategoryMold + '<div class="row" style="margin-top: 10px;">';
-                        }
-                        allCategoryMold = allCategoryMold + '<div style="width: 20%;">';
-                        allCategoryMold = allCategoryMold + '<a href="' + categoryMoldUrl + '?firstCategory=' + categoryList[i].cate + '" class="dropdown-item parent-category-title">' + categoryList[i].cateName.toUpperCase() + '</a>';
-                        allCategoryMold = allCategoryMold + makeAllCategory(categoryList[i], categoryList, "MOLD");
-                        allCategoryMold = allCategoryMold + '</div>';
-                        if((allCategoryMoldCnt % 5) == 4) {
-                            allCategoryMold = allCategoryMold + '</div>';
-                        }
-
-                        allCategoryMold2 = allCategoryMold2 + '<div class="col-md-2 col-sm-2 pl-0">';
-                        allCategoryMold2 = allCategoryMold2 + '<a href="#" class="dropdown-item"  onclick="getCateUid(\''+categoryList[i].cate+'\', \''+categoryList[i].cateName+'\');"><b>' + categoryList[i].cateName + '</b></a>';
-                        allCategoryMold2 = allCategoryMold2 + makeAllCategory2(categoryList[i], categoryList, "MOLD");
-                        allCategoryMold2 = allCategoryMold2 + '</div>';
-
-                        categoryMoldMenu = categoryMoldMenu + '<div class="search-category-row">'
-                                                            + '<div class="row">'
-                                                            + '<div class="col-sm-2 search-parent-category" data-cate="' + categoryList[i].cate + '">'
-                                                            + categoryList[i].cateName
-                                                            + '</div>';
-                        categoryMoldMenu = categoryMoldMenu + makeCategoryMenu(categoryList[i], categoryList, "MOLD");
-                        categoryMoldMenu = categoryMoldMenu + '</div>';
-                        categoryMoldMenu = categoryMoldMenu + '</div>';
-
-                        allCategoryMoldCnt++;
-                    } else {
-                        if(allCategoryMoldLeafCnt % 5 == 0) {
-                            allCategoryMoldLeaf = allCategoryMoldLeaf + '<div class="row">';
-                        }
-                        allCategoryMoldLeaf = allCategoryMoldLeaf + '<div style="width: 20%;">';
-                        allCategoryMoldLeaf = allCategoryMoldLeaf + '<a href="' + categoryMoldUrl + '?firstCategory=' + categoryList[i].cate + '" class="dropdown-item parent-category-title">' + categoryList[i].cateName.toUpperCase() + '</a>';
-                        allCategoryMoldLeaf = allCategoryMoldLeaf + '</div>';
-                        if((allCategoryMoldLeafCnt % 5) == 4) {
-                            allCategoryMoldLeaf = allCategoryMoldLeaf + '</div>';
-                        }
-
-                        allCategoryMoldLeaf2 = allCategoryMoldLeaf2 + '<div class="col-md-2 col-sm-2 pl-0 pr-0">';
-                        allCategoryMoldLeaf2 = allCategoryMoldLeaf2 + '<a href="#" class="dropdown-item" onclick="getCateUid(\''+categoryList[i].cate+'\', \''+categoryList[i].cateName+'\');"><b>' + categoryList[i].cateName + '</b></a>';
-                        allCategoryMoldLeaf2 = allCategoryMoldLeaf2 + '</div>';
-
-                        categoryMoldMenuLeaf = categoryMoldMenuLeaf + '<div class="col-sm-2 search-child-category" data-cate="' + categoryList[i].cate + '">'
-                                                                    + categoryList[i].cateName
-                                                                    + '</div>';
-                        
-                        allCategoryMoldLeafCnt++;
+                } catch (e) {
+                    return aCurrencySymbol[0] + sPriceTxt + aCurrencySymbol[1];
+                }
+            }
+        }; CAFE24.CURRENCY_INFO = { getOriginReferenceCurrency: function () { return 'USD' }, getCurrencyList: function (sCurrencyCode) { var aCurrencyList = { "JPY": { "currency_symbol": "&yen;", "decimal_place": 0, "round_method_type": "F" }, "VND": { "currency_symbol": "&#8363;", "decimal_place": 0, "round_method_type": "F" }, "PHP": { "currency_symbol": "&#8369;", "decimal_place": 2, "round_method_type": "R" }, "USD": { "currency_symbol": "$", "decimal_place": 2, "round_method_type": "R" }, "CNY": { "currency_symbol": "&yen;", "decimal_place": 2, "round_method_type": "R" }, "TWD": { "currency_symbol": "NT$", "decimal_place": 0, "round_method_type": "F" }, "EUR": { "currency_symbol": "\u20ac", "decimal_place": 2, "round_method_type": "R" }, "BRL": { "currency_symbol": "R$", "decimal_place": 2, "round_method_type": "R" }, "AUD": { "currency_symbol": "A$", "decimal_place": 2, "round_method_type": "R" }, "BHD": { "currency_symbol": ".&#1583;.&#1576;", "decimal_place": 3, "round_method_type": "R" }, "BDT": { "currency_symbol": "&#2547;", "decimal_place": 2, "round_method_type": "R" }, "GBP": { "currency_symbol": "&pound;", "decimal_place": 2, "round_method_type": "R" }, "CAD": { "currency_symbol": "C$", "decimal_place": 2, "round_method_type": "R" }, "CZK": { "currency_symbol": "K&#269;", "decimal_place": 2, "round_method_type": "R" }, "DKK": { "currency_symbol": "kr", "decimal_place": 2, "round_method_type": "R" }, "HKD": { "currency_symbol": "HK$", "decimal_place": 2, "round_method_type": "R" }, "HUF": { "currency_symbol": "Ft", "decimal_place": 2, "round_method_type": "R" }, "INR": { "currency_symbol": "&#8377;", "decimal_place": 2, "round_method_type": "R" }, "IDR": { "currency_symbol": "Rp", "decimal_place": 2, "round_method_type": "R" }, "ILS": { "currency_symbol": "&#8362;", "decimal_place": 2, "round_method_type": "R" }, "JOD": { "currency_symbol": " &#1583;&#1610;&#1606;&#1575;&#1585;", "decimal_place": 3, "round_method_type": "R" }, "KWD": { "currency_symbol": "&#1583;&#1610;&#1606;&#1575;&#1585;", "decimal_place": 3, "round_method_type": "R" }, "MYR": { "currency_symbol": "RM", "decimal_place": 2, "round_method_type": "R" }, "MXN": { "currency_symbol": "Mex$", "decimal_place": 2, "round_method_type": "R" }, "NZD": { "currency_symbol": "NZ$", "decimal_place": 2, "round_method_type": "R" }, "NOK": { "currency_symbol": "kr", "decimal_place": 2, "round_method_type": "R" }, "PKR": { "currency_symbol": "&#8360;", "decimal_place": 2, "round_method_type": "R" }, "PLN": { "currency_symbol": "z\u0142", "decimal_place": 2, "round_method_type": "R" }, "RUB": { "currency_symbol": "\u0440\u0443\u0431", "decimal_place": 2, "round_method_type": "R" }, "SAR": { "currency_symbol": "&#65020;", "decimal_place": 2, "round_method_type": "R" }, "SGD": { "currency_symbol": "S$", "decimal_place": 2, "round_method_type": "R" }, "ZAR": { "currency_symbol": "R", "decimal_place": 2, "round_method_type": "R" }, "SEK": { "currency_symbol": "kr", "decimal_place": 2, "round_method_type": "R" }, "CHF": { "currency_symbol": "Fr", "decimal_place": 2, "round_method_type": "R" }, "THB": { "currency_symbol": "&#3647;", "decimal_place": 2, "round_method_type": "R" }, "TRY": { "currency_symbol": "TL", "decimal_place": 2, "round_method_type": "R" }, "AED": { "currency_symbol": "&#1601;&#1604;&#1587;", "decimal_place": 2, "round_method_type": "R" } }; return aCurrencyList[sCurrencyCode] }, isUseReferenceCurrency: function () { return false } }; CAFE24.COMMON_UTIL = { convertSslForString: function (sString) { return sString.replace(/http:/gi, ''); }, convertSslForHtml: function (sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2'); }, getProtocol: function () { return 'http'; }, moveSsl: function () { if (CAFE24.COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }, setEcCookie: function (sKey, sValue, iExpire) { var exdate = new Date(); exdate.setDate(exdate.getDate() + iExpire); var setValue = escape(sValue) + "; domain=." + CAFE24.GLOBAL_INFO.getBaseDomain() + "; path=/;expires=" + exdate.toUTCString(); document.cookie = sKey + "=" + setValue; } }; CAFE24.SHOP_LIB_INFO = {
+            getBankInfo: function () {
+                var oBankInfo = "";
+                $.ajax({
+                    type: "GET",
+                    url: "/exec/front/Shop/Bankinfo",
+                    dataType: "json",
+                    async: false,
+                    success: function (oResponse) {
+                        oBankInfo = oResponse;
                     }
+                });
+                return oBankInfo;
+            }
+        }; var EC_SDE_SHOP_NUM = CAFE24.SDE_SHOP_NUM;
+        var SHOP = CAFE24.getDeprecatedNamespace('SHOP');
+        var EC_COMMON_UTIL = CAFE24.getDeprecatedNamespace('EC_COMMON_UTIL');
+        var EC_SHOP_LIB_INFO = CAFE24.getDeprecatedNamespace('EC_SHOP_LIB_INFO');
+        var EC_CURRENCY_INFO = CAFE24.getDeprecatedNamespace('EC_CURRENCY_INFO');
+        CAFE24.ROOT_DOMAIN = "cafe24.com";
+        CAFE24.API_DOMAIN = "cafe24api.com";
+        CAFE24.TRANSLATE_LOG_STATUS = "F";
+        CAFE24.GLOBAL_INFO = (function () {
+            var oData = { "base_domain": "fallinfuni01.cafe24.com", "root_domain": "cafe24.com", "api_domain": "cafe24api.com", "is_global": false, "is_global_standard": false, "country_code": "KR", "language_code": "ko_KR", "admin_language_code": "ko_KR" };
+            return {
+                getBaseDomain: function () {
+                    return oData['base_domain'];
+                },
+                getRootDomain: function () {
+                    return oData['root_domain'];
+                },
+                getApiDomain: function () {
+                    return oData['api_domain'];
+                },
+                isGlobal: function () {
+                    return oData['is_global'];
+                },
+                isGlobalStandard: function () {
+                    return oData['is_global_standard'];
+                },
+                getCountryCode: function () {
+                    return oData['country_code'];
+                },
+                getLanguageCode: function () {
+                    return oData['language_code'];
+                },
+                getAdminLanguageCode: function () {
+                    return oData['admin_language_code'];
+                }
+            };
+        })();
+        var EC_ROOT_DOMAIN = CAFE24.ROOT_DOMAIN;
+        var EC_API_DOMAIN = CAFE24.API_DOMAIN;
+        var EC_TRANSLATE_LOG_STATUS = CAFE24.TRANSLATE_LOG_STATUS;
+        var EC_GLOBAL_INFO = CAFE24.getDeprecatedNamespace('EC_GLOBAL_INFO');
+        CAFE24.AVAILABLE_LANGUAGE = ["ko_KR", "zh_CN", "en_US", "zh_TW", "es_ES", "pt_PT", "vi_VN", "ja_JP", "en_PH"];
+        CAFE24.AVAILABLE_LANGUAGE_CODES = { "ko_KR": "KOR", "zh_CN": "CHN", "en_US": "ENG", "zh_TW": "TWN", "es_ES": "ESP", "pt_PT": "PRT", "vi_VN": "VNM", "ja_JP": "JPN", "en_PH": "PHL" };
+        var EC_AVAILABLE_LANGUAGE = CAFE24.AVAILABLE_LANGUAGE;
+        var EC_AVAILABLE_LANGUAGE_CODES = CAFE24.AVAILABLE_LANGUAGE_CODES;
+        CAFE24.GLOBAL_PRODUCT_LANGUAGE_CODES = {
+            sClearanceCategoryCode: '',
+            sManualLink: '//serviceguide.cafe24shop.com/ko_KR/PR.PD.GA.html',
+            sHsCodePopupLink: 'https://www.wcotradetools.org/en/harmonized-system',
+            aCustomRegex: '"PHL" : "^[0-9]{8}[A-Z]?$"',
+            sCountryCodeData: 'kor',
+            sEnglishExampleURlForGlobal: '',
+            aReverseAddressCountryCode: ["VNM", "PHL"],
+            aSizeGuideCountryAlign: '["US","UK","EU","KR","JP","CN"]',
+            aIsSupportTran: ["ja_JP", "zh_CN", "zh_TW", "en_US", "vi_VN", "en_PH", "pt_PT", "es_ES"]
+        };
+        var EC_GLOBAL_PRODUCT_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_PRODUCT_LANGUAGE_CODES');
+        CAFE24.GLOBAL_ORDER_LANGUAGE_CODES = {
+            aModifyOrderLanguage: { "KR": "ko_KR", "JP": "ja_JP", "CN": "zh_CN", "TW": "zh_TW", "VN": "vi_VN", "PH": "en_PH" },
+            aUseIdCardKeyCountry: ["CN", "TW"],
+            aLanguageWithCountryCode: { "zh_CN": ["CN", "CHN", "HK", "HNK"], "ja_JP": ["JP", "JPN"], "zh_TW": ["TW", "TWN"], "ko_KR": ["KR", "KOR"], "vi_VN": ["VN", "VNM"], "en_PH": ["PH", "PHL"] },
+            aCheckDisplayRequiredIcon: ["ja_JP", "zh_CN", "zh_TW", "en_US", "vi_VN", "en_PH"],
+            aSetReceiverName: { "zh_CN": { "sCountry": "CN", "bUseLastName": true }, "zh_TW": { "sCountry": "TW", "bUseLastName": false }, "ja_JP": { "sCountry": "JP", "bUseLastName": true } },
+            aSetDeferPaymethodLanguage: { "ja_JP": "\uc77c\ubcf8", "zh_CN": "\uc911\uad6d" },
+            aUseDeferPaymethod: ["ja_JP", "zh_CN"],
+            aCheckShippingCompanyAndPaymethod: ["ja_JP", "zh_CN"],
+            aSetDeferPaymethodLanguageForShipping: { "ja_JP": "\u65e5\u672c", "zh_CN": "\uc911\uad6d" },
+            aCheckStoreByPaymethod: ["ja_JP", "zh_CN"],
+            aCheckIsEmailRequiredForJs: ["en_US", "zh_CN", "zh_TW", "ja_JP", "vi_VN", "en_PH"],
+            aSetIdCardKeyCountryLanguage: { "CN": "\uc911\uad6d\uc758", "TW": "\ub300\ub9cc\uc758" },
+            aReverseGlobalAddress: ["en_PH", "vi_VN", "PHL", "VNM", "VN", "PH"],
+            aNoCheckZipCode: ["KOR", "JPN"],
+            aNotPostCodeAPICountryList: ["en_US", "es_ES", "pt_PT", "en_PH"],
+            aEnableSearchExchangeAddr: ["KR", "JP", "CN", "VN", "TW", "PH"],
+            aDuplicatedBaseAddr: ["TW", "JP"],
+            aReverseAddressCountryCode: ["VN", "PH"],
+            aCheckZipCode: ["PHL", "en_PH", "PH"]
+        };
+        var EC_GLOBAL_ORDER_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_ORDER_LANGUAGE_CODES');
+        CAFE24.GLOBAL_MEMBER_LANGUAGE_CODES = {
+            sAdminWebEditorLanguageCode: 'ko',
+            oNotAvailDecimalPointLanguages: ["ko_KR", "ja_JP", "zh_TW", "vi_VN"],
+            oAddressCountryCode: { "KOR": "ko_KR", "JPN": "ja_JP", "CHN": "zh_CN", "TWN": "zh_TW", "VNM": "vi_VN", "PHL": "en_PH" },
+        };
+        var EC_GLOBAL_MEMBER_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_MEMBER_LANGUAGE_CODES');
+        CAFE24.GLOBAL_BOARD_LANGUAGE_CODES = {
+            bUseLegacyBoard: true
+        };
+        var EC_GLOBAL_BOARD_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_BOARD_LANGUAGE_CODES');
+        CAFE24.GLOBAL_MALL_LANGUAGE_CODES = {
+            oDesign: {
+                oDesignAddReplaceInfo: { "group_id": "SKIN.ADD.ADMIN.DESIGNDETAIL", "replacement": { "KR": "KOREAN", "US": "ENGLISH", "JP": "JAPANESE", "CN": "SIMPLIFIED.CHINESE", "TW": "TRADITIONAL.CHINESE", "ES": "SPANISH", "PT": "PORTUGUESE", "PH": "ENGLISH" } },
+                oDesignDetailLanguageCountryMap: { "KR": "ko_KR", "JP": "ja_JP", "CN": "zh_CN", "TW": "zh_TW", "US": "en_US", "ES": "es_ES", "PT": "pt_PT", "PH": "en_PH" },
+                oSmartDesignSwitchTipLink: { "edibot": { "img": "\/\/img.echosting.cafe24.com\/smartAdmin\/img\/design\/img_editor_dnd.png", "link": "\/\/ecsupport.cafe24.com\/board\/free\/list.html?board_act=list&board_no=12&category_no=9&cate_no=9" }, "smart": { "img": "\/\/img.echosting.cafe24.com\/smartAdmin\/img\/design\/ko_KR\/img_editor_smart.png", "link": "\/\/sdsupport.cafe24.com" } },
+                oSmartDesignDecoShopList: ["ko_KR", "ja_JP", "zh_CN", "en_US", "zh_TW", "es_ES", "pt_PT"],
+                oSmartDesignDecoMultilingual: { "list": { "ko_KR": "KOREAN", "en_US": "ENGLISH", "ja_JP": "JAPANESE", "zh_CN": "SIMPLIFIED.CHINESE", "zh_TW": "TRADITIONAL.CHINESE", "es_ES": "SPANISH", "pt_PT": "PORTUGUESE", "vi_VN": "VIETNAMESE" }, "group_id": "EDITOR.LAYER.EDITING.DECO" },
+                aSmartDesignModuleShopList: ["ko_KR", "ja_JP", "zh_CN", "en_US", "zh_TW", "es_ES", "pt_PT"]
+            },
+            oStore: {
+                oMultiShopCurrencyInfo: { "en_US": { "currency": "USD" }, "zh_CN": { "currency": "USD", "sub_currency": "CNY" }, "ja_JP": { "currency": "JPY" }, "zh_TW": { "currency": "TWD" }, "es_ES": { "currency": "EUR" }, "pt_PT": { "currency": "EUR" }, "ko_KR": { "currency": "KRW" }, "vi_VN": { "currency": "VND" }, "en_PH": { "currency": "PHP" } },
+                oBrowserRedirectLanguage: { "ko": { "primary": "ko_KR", "secondary": "en_US" }, "en": { "detail": { "en-ph": { "primary": "en_PH", "secondary": "en_US" }, "en-us": { "primary": "en_US", "secondary": "es_ES" }, "default": { "primary": "en_US", "secondary": "es_ES" } } }, "ja": { "primary": "ja_JP", "secondary": "en_US" }, "zh": { "detail": { "zh-cn": { "primary": "zh_CN", "secondary": "en_US" }, "zh-tw": { "primary": "zh_TW", "secondary": "zh_CN" }, "default": { "primary": "en_US", "secondary": "ko_KR" } } }, "es": { "primary": "es_ES", "secondary": "en_US" }, "pt": { "primary": "pt_PT", "secondary": "en_US" }, "vi": { "primary": "vi_VN", "secondary": "en_US" }, "default": { "primary": "en_US", "secondary": "ko_KR" } },
+                aChangeableLanguages: ["en_US", "vi_VN", "ja_JP", "ko_KR", "zh_TW", "th_TH"],
+                aNoZipCodeLanguage: ["ko_KR", "ja_JP"]
+            },
+            oMobile: {
+                sSmartWebAppFaqUrl: "https://ecsupport.cafe24.com/board/free/read.html?no=1832&board_no=5&category_no=13&cate_no=13&category_no=13&category_no=13",
+                sAmpFaqUrl: "https://ecsupport.cafe24.com/board/free/read.html?no=1864&board_no=5&category_no=13&cate_no=13&category_no=13&category_no=13",
+            },
+            oPromotion: {
+                bQrCodeAvailable: true,
+                bSnsMarketingAvailable: true
+            },
+            oShippingReverseAddressLanguage: ["vi_VN", "en_PH"],
+            oGlobalStandardSwitchHelpCodeLink: { "SH.DS": { "link": "\/\/serviceguide.cafe24shop.com\/en_PH\/SH.DS.html" }, "PR.DS": { "link": "\/\/serviceguide.cafe24shop.com\/en_PH\/PR.DS.html" }, "OR.SM.BO": { "link": "\/\/serviceguide.cafe24shop.com\/en_PH\/OR.SM.BO.html" }, "CU.DS": { "link": "\/\/serviceguide.cafe24shop.com\/en_PH\/CU.DS.html" }, "DE.DS": { "link": "\/\/serviceguide.cafe24shop.com\/en_PH\/DE.DS.html" }, "MB.DS": { "link": "\/\/serviceguide.cafe24shop.com\/en_PH\/MB.DS.html" }, "PM.DS": { "link": "\/\/serviceguide.cafe24shop.com\/en_PH\/PM.DS.html" } },
+            getAdminMainLocaleLanguage: function (sSkinLocaleCode) {
+                var oLocaleData = [];
+                var locale = "";
+                var shopLangName = "";
+                if (sSkinLocaleCode == "US") {
+                    locale = "en_US";
+                    shopLangName = "ENGLISH";
+                } else if (sSkinLocaleCode == "JP") {
+                    locale = "ja_JP";
+                    shopLangName = "JAPANESE";
+                } else if (sSkinLocaleCode == "CN") {
+                    locale = "zh_CN";
+                    shopLangName = "SIMPLIFIED.CHINESE";
+                } else if (sSkinLocaleCode == "TW") {
+                    locale = "zh_TW";
+                    shopLangName = "TRADITIONAL.CHINESE";
+                } else if (sSkinLocaleCode == "ES") {
+                    locale = "es_ES";
+                    shopLangName = "SPANISH";
+                } else if (sSkinLocaleCode == "PT") {
+                    locale = "pt_PT";
+                    shopLangName = "PORTUGUESE";
+                } else if (sSkinLocaleCode == "VN") {
+                    locale = "vi_VN";
+                    shopLangName = "VIETNAMESE";
+                } else if (sSkinLocaleCode == "PH") {
+                    locale = "en_PH";
+                    shopLangName = "ENGLISH.PH";
+                }
+                oLocaleData["locale"] = locale;
+                oLocaleData["shopLangName"] = shopLangName;
+                return oLocaleData;
+            }
+        };
+        var EC_GLOBAL_MALL_LANGUAGE_CODES = CAFE24.getDeprecatedNamespace('EC_GLOBAL_MALL_LANGUAGE_CODES');
+        CAFE24.GLOBAL_DATETIME_INFO = {
+            oConstants: { "STANDARD_DATE_REGEX": "\/([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\/", "IN_ZONE": "inZone", "OUT_ZONE": "outZone", "IN_FORMAT": "inFormat", "OUT_FORMAT": "outFormat", "IN_DATE_FORMAT": "inDateFormat", "IN_TIME_FORMAT": "inTimeFormat", "OUT_DATE_FORMAT": "outDateFormat", "OUT_TIME_FORMAT": "outTimeFormat", "IN_FORMAT_DATE_ONLY": 1, "IN_FORMAT_TIME_ONLY": 2, "IN_FORMAT_ALL": 3, "OUT_FORMAT_DATE_ONLY": 1, "OUT_FORMAT_TIME_ONLY": 2, "OUT_FORMAT_ALL": 3, "DATE_ONLY": "YYYY-MM-DD", "TIME_ONLY": "HH:mm:ss", "FULL_TIME": "YYYY-MM-DD HH:mm:ss", "ISO_8601": "YYYY-MM-DD[T]HH:mm:ssZ", "YEAR_ONLY": "YYYY", "MONTH_ONLY": "MM", "DAY_ONLY": "DD", "WEEK_ONLY": "e", "TIME_H_I_ONLY": "HH:mm", "TIME_HOUR_ONLY": "HH", "TIME_MINUTE_ONLY": "mm", "POSTGRE_FULL_TIME": "YYYY-MM-DD HH24:MI:SS", "POSTGRE_TIME_ONLY": " HH24:MI:SS", "MICRO_SECOND_ONLY": "u", "SEOUL": "Asia\/Seoul", "TOKYO": "Asia\/Tokyo", "SHANGHAI": "Asia\/Shanghai", "TAIPEI": "Asia\/Taipei", "HANOI": "Asia\/Bangkok", "LOS_ANGELES": "America\/Los_Angeles", "LISBON": "Europe\/Lisbon", "MADRID": "Europe\/Madrid", "SINGAPORE": "Asia\/Singapore", "UTC": "Etc\/UTC", "MAX_DATETIME": "9999-12-31 23:59:59" },
+            oOptions: { "inZone": "Asia\/Seoul", "inFormat": "YYYY-MM-DD HH:mm:ss", "inDateFormat": "YYYY-MM-DD", "inTimeFormat": "HH:mm:ss", "outZone": "Asia\/Seoul", "outFormat": "YYYY-MM-DD HH:mm:ss", "outDateFormat": "YYYY-MM-DD", "outTimeFormat": "HH:mm:ss" },
+            oPolicies: { "shop": { "outZone": "Asia\/Seoul", "outFormat": "YYYY-MM-DD HH:mm:ss", "outDateFormat": "YYYY-MM-DD", "outTimeFormat": "HH:mm:ss" } },
+            sOverrideTimezone: '',
+            sMomentNamespace: 'EC_GLOBAL_MOMENT'
+        };
+        CAFE24.FRONT_JS_CONFIG_MANAGE = { "sSmartBannerScriptUrl": "https:\/\/app4you.cafe24.com\/SmartBanner\/tunnel\/scriptTags?vs=1563164396689206", "sMallId": "fallinfuni01", "sDefaultAppDomain": "https:\/\/app4you.cafe24.com", "sWebLogOffFlag": "F" };
+        var EC_FRONT_JS_CONFIG_MANAGE = CAFE24.getDeprecatedNamespace('EC_FRONT_JS_CONFIG_MANAGE');
+        typeof window.CAFE24 === "undefined" && (window.CAFE24 = {});
+        CAFE24.ROUTE = { "is_mobile": false, "is_need_route": false, "language_code": "ko_KR", "path": { "origin": "\/", "result": "\/", "prefix": "" }, "shop_no": 0, "skin_code": "default" };
+    </script>
+    <link rel="stylesheet" type="text/css"
+        href="//img.echosting.cafe24.com/editors/froala/css/froala_style_ec.min.css?vs=2207201121" charset="utf-8">
 
-                    categoryMoldCnt++;
+    <link rel="stylesheet" type="text/css"
+        href="/ind-script/optimizer.php?filename=nZExDgIxDAT7KC3vsOAJPIEfOMFwJxxv5CQS_J6jggYJ0o52doulBUVof3CqjqtzIZeG4Vkot0YXh3XKKAUWN7CjX_KSQ4OOvsJCwn1SHL3Pjio_xOfUzkllUkUNupqExGZf97lWOoL9TKfPug3H9MIxKfLtP_l90BM&amp;type=css&amp;k=a25e2c4fd60527b98405149b31c653daef4af884&amp;t=1658136771">
+    <link rel="stylesheet" type="text/css"
+        href="/ind-script/optimizer.php?filename=tdXBTgQhDADQ-45Xv6Maf8KDN78ASmfoCi2Zwkb9etlVEy-eBi4EAnk0hQJEzQSESzPaDVaXEsvahB8eoTSfGJdYcwILtAQy3gTsjeUJlnAGNINwPmXHctf793AEW1XqrTlGJfehrYJ3xngLkPDUB3TqE7Qfs69c1tAS_W6TW6psUctr5FJYttEboMqlG6xS8HiOfw7s2x7Glb2HjOM8SxzGH5WR2zE-kzts_wnVVxlmZb0MvvqoOatMqqfGk-Cq2ouqTNIjpVn0kDr4X3cbi6s0K-vOT5J9q3XaLfT6Pi8haVay-yqc9hW9sI17i1fVOvC9zO7zan0B&amp;type=css&amp;k=41e1a7dabcc61bcb5edfe80261229483cff58285&amp;t=1627372626&amp;user=T">
+    <style type="text/css">
+
+    </style>
+    <title>감성 디자인 가구 폴인퍼니</title>
+    <meta name="path_role" content="MAIN">
+    <meta name="author" content="폴인퍼니">
+    <meta name="description" content="합리적 가격 감성 디자인 가구브랜드 폴인퍼니">
+    <meta name="keywords"
+        content="폴인퍼니,용인가구,용안가구단지,세라믹식탁,세라믹식탁세트,가구맘,CERAMIC,아쿠아클린,아쿠아클린소파,아쿠아클린소파예쁜곳,천안아쿠아클린소파,천안아쿠아클린,천안선브렐라,선브렐라,선브렐라소파,천안선브렐라소파,청주소파,청주가구,세종가구,세종가구단지,청주가구단지,세종소파,세종식탁,평택소파,평택식탁,평택가구,평택가구단지,천안가구,세라믹식탁,6인용세라믹식탁,4인용세라믹식탁,원목식탁">
+
+    <hr class="layout">
+    <div id="wrap">
+        <div id="container">
+
+
+            <!-------------------------------------------------------------------------------------------------------------------------------------
+   
+   
+   
+      ◀◀◀◀◀ 좌측 자주쓰는화면의 "dj_map.html" 를 클릭하시면 수정위치를 보다 쉽게 찾으실 수 있습니다. ◀◀◀◀◀
+   
+      ※ 각 섹션 별로 사용 원하지 않으실 경우 class="on"을 class="off"로 변경하시면 숨김 처리가 됩니다.
+         다시 class="on"으로 설정시 보여지게 됩니다. 
+   
+      ※ 직접 수정 시 오류가 발생할 수 있으므로, 꼭 수정전 파일을 백업하시길 권합니다. (오류 발생 후 복구 요청시 비용 발생)
+   
+      ※ 모든 이미지는 편집창이나 사이트상이 아닌 FTP를 이용해 수정하셔야 합니다. 
+         관련 매뉴얼은 http://d-j.co.kr/_dj/sub/manual/list.html?board_no=3 (FTP 사용법 이미지 변경)을 참고 바랍니다.
+   
+   
+   
+   --------------------------------------------------------------------------------------------------------------------------------------->
+
+
+            <style>
+                .dj_slider .slider_1 {
+                    min-height: 850px;
                 }
 
-                if((i+1) == categoryList.length) {
-                    if((allCategoryMoldCnt % 5) < 4) {
-                        allCategoryMold = allCategoryMold + '</div>';
-                    }
-
-                    if((allCategoryMoldLeafCnt % 5) < 4) {
-                        allCategoryMoldLeaf = allCategoryMoldLeaf + '</div>';
-                    }
+                .dj_slider .slider_1.slick-initialized {
+                    height: 850px;
                 }
+            </style>
 
-                if(categoryList[i].company == 'Y') {
-                    categoryCompany = categoryCompany + '<li>';
-                    categoryCompany = categoryCompany + '<a href="' + categoryCompanyUrl + '?firstCategory=' + categoryList[i].cate + '" class="dropdown-item" style="color: white;">' + categoryList[i].cateName + '</a>';
-                    categoryCompany = categoryCompany + makeCategory(categoryList[i], categoryList, "COMPANY", "");
-                    categoryCompany = categoryCompany + '</li>';
-                    
-                    allCategoryCompany = allCategoryCompany + '<div>';
-                    allCategoryCompany = allCategoryCompany + '<a href="' + categoryCompanyUrl + '?firstCategory=' + categoryList[i].cate + '" class="dropdown-item search-child-category">' + categoryList[i].cateName + '</a>';
-                    allCategoryCompany = allCategoryCompany + '</div>';
+            <div class="on" id="section_on_off">
+                <!--★ 메인 롤링이미지 ★-->
+                <div id="main_section_1">
+                    <div class="section left">
+                        <div class="dj_slider slider_1_top action_block">
+                            <div class="foot_btn">
+                                <ul class="inner">
+                                    <li class="btn_prev slick-arrow" style="display: list-item;"><img
+                                            src="/_dj/img/slider_2_prev_btn.png"></li>
+                                    <li class="btn_next slick-arrow" style="display: list-item;"><img
+                                            src="/_dj/img/slider_2_next_btn.png"></li>
+                                </ul>
+                            </div>
+                            <!------------------------------------------------
+   
+                       ※ 숫자 3를 이미지 개수만큼 변경하시면 됩니다.
+   
+                    ------------------------------------------------->
+                            <div class="slider_tag"><span>3 / 3</span></div>
+                            <div class="slider_1 slick-initialized slick-slider" style="height: 1028px;">
 
-                    if(categoryList[i].type == 'DIRECTORY') {
-                        categoryCompanyMenu = categoryCompanyMenu + '<div class="search-category-row">'
-                                                                + '<div class="row">'
-                                                                + '<div class="col-sm-2 search-parent-category" data-cate="' + categoryList[i].cate + '">'
-                                                                + categoryList[i].cateName
-                                                                + '</div>';
-                        categoryCompanyMenu = categoryCompanyMenu + makeCategoryMenu(categoryList[i], categoryList, "COMPANY");
-                        categoryCompanyMenu = categoryCompanyMenu + '</div>';
-                        categoryCompanyMenu = categoryCompanyMenu + '</div>';
-                    } else {
-                        categoryCompanyMenuLeaf = categoryCompanyMenuLeaf + '<div class="col-sm-2 search-child-category" data-cate="' + categoryList[i].cate + '">'
-                                                                        + categoryList[i].cateName
-                                                                        + '</div>';
-                    }
+                                <!------------------------------------------------------------------------
+   .
+                       ※ onclick="window.location.href='링크주소';"
+                       ※ <div> ~ </div> 까지 복사해 원하시는 개수로 사용 가능합니다.
+   
+                     ------------------------------------------------------------------------>
+
+
+                                <!--★ 1번 이미지 / 이후 아래 모든 id="slider_1_img" 아이디 값 수정/삭제하시면 안됩니다!!! ★-->
+                                <div aria-live="polite" class="slick-list draggable">
+                                    <div class="slick-track" style="opacity: 1; width: 4410px;">
+                                        <div class="slick-slide" data-slick-index="0" aria-hidden="true"
+                                            style="transition: opacity 400ms linear 0s; width: 1470px; position: relative; left: 0px; top: 0px; z-index: 998; opacity: 0;">
+                                            <a href="https://brand.naver.com/fallinfuni/products/6853262924"
+                                                target="_blank" title="폴인퍼니스마트스토어"><img src="/_dj/img/monte_pc.jpg"
+                                                    id="slider_1_img" alt="세번째이미지"></a><a></a>
+                                        </div>
+                                        <div class="slick-slide" data-slick-index="1" aria-hidden="true"
+                                            style="transition: opacity 400ms linear 0s; width: 1470px; position: relative; left: -1470px; top: 0px; z-index: 998; opacity: 0;">
+                                            <a href="http://skin-skin3.fallinfuni01.cafe24.com/board/magazine/read.html?no=79&amp;board_no=5"
+                                                target="_blank" title="폴인퍼니스마트스토어"><img src="/_dj/img/showroom_pc.jpg"
+                                                    id="slider_1_img" alt="세번째이미지"></a><a></a>
+                                        </div>
+                                        <div class="slick-slide slick-current slick-active" data-slick-index="2"
+                                            aria-hidden="false"
+                                            style="width: 1470px; position: relative; left: -2940px; top: 0px; z-index: 999; opacity: 1;">
+                                            <a href="https://brand.naver.com/fallinfuni" target="_blank"
+                                                title="폴인퍼니스마트스토어"><img src="/_dj/img/main_01.jpg" id="slider_1_img"
+                                                    alt="세번째이미지"></a><a></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--★ 2번 이미지 ★-->
+
+                                <!--★ 3번 이미지 ★-->
+
+                                <ul class="slick-dots" style="display: block;">
+                                    <li class="" aria-hidden="true"><button type="button" data-role="none" role="button"
+                                            aria-required="false" tabindex="0">1</button></li>
+                                    <li aria-hidden="true" class=""><button type="button" data-role="none" role="button"
+                                            aria-required="false" tabindex="0">2</button></li>
+                                    <li aria-hidden="false" class="slick-active"><button type="button" data-role="none"
+                                            role="button" aria-required="false" tabindex="0">3</button></li>
+                                </ul>
+                            </div>
+
+
+
+                            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+                            <script type="text/javascript" src="/_dj/js/slick/slick.min.js"></script>
+                            <!------------------------------------------------------------------------ 
+   
+                       ※ autoplaySpeed: 7000 에서 속도를 조절하시면 됩니다. 1000 = 1초
+   
+                    --------------------------------------------------------=---------------->
+                            <script type="text/javascript">
+                                $('.slider_1').slick({
+                                    prevArrow: $('.btn_prev'),
+                                    nextArrow: $('.btn_next'),
+                                    autoplay: true,
+                                    autoplaySpeed: 5000,
+                                    dots: true,
+                                    arrow: true,
+                                    infinite: true,
+                                    fade: true,
+                                    speed: 400,
+                                    cssEase: 'linear',
+                                    accessibility: false,
+                                    pauseOnHover: false,
+                                });
+                            </script>
+                            <script type="text/javascript">
+                                var $status = $('.slider_tag span');
+                                var $slickElement = $('.slider_1_top');
+                                $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+                                    var i = (currentSlide ? currentSlide : 0) + 1;
+                                    $status.text(i + ' / ' + slick.slideCount);
+                                });   
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="on" id="section_on_off">
+                <!--★ 시그니처 텍스트 ★-->
+                <div id="main_section_ment">
+                    <ul>
+                        <li>
+                            <p class="eng scroll-fade motion2">FALL IN FUNI DINNING TABLE</p>
+
+                            <h2 class="scroll-fade  motion1">
+                                합리적인 가격<br>
+                                좋은 품질<br>
+                                폴인퍼니
+                            </h2>
+
+                            <p class="scroll-fade motion5">
+                                튼튼하고 사용하기 편리한 세라믹, 친환경 천연 원목 소재, 최소한의 접착제 사용과 내구성과 안정성을 고려한 디자인<br>
+                                수많은 조합으로 나만의 식탁을 구성할 수 있기까지 오늘도 폴인퍼니의 식탁에 대한 연구는 계속됩니다.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="on" id="section_on_off">
+                <!--★ 배너 3개 ★-->
+                <div id="main_section_banner">
+                    <ul>
+                        <li class="scroll-fade dj-viewport motion4">
+                            <!-------------------------------------------
+               ※  <a href="링크주소">
+               --------------------------------------------->
+                            <a href="http://skin-skin3.fallinfuni01.cafe24.com/ceramic.html">
+                                <img src="/_dj/img/ceramics_PC.jpg" alt="배너이미지1">
+                                &nbsp;<span>세라믹?</span>
+                                <span class="ment">폴인퍼니만의 세라믹 기술력</span>
+                            </a>
+                        </li>
+                        <li class="scroll-fade dj-viewport motion3">
+                            <a href="https://smartstore.naver.com/fallinfuni">
+                                <img src="/_dj/img/smartstore_PC.jpg" alt="배너이미지2">
+                                &nbsp;<span>구매 바로가기</span>
+                                <span class="ment">폴인퍼니 스마트스토어에서 구매해 주세요!</span>
+                            </a>
+                        </li>
+                        <li class="scroll-fade dj-viewport motion4">
+                            <a href="http://skin-skin3.fallinfuni01.cafe24.com/showroom.html">
+                                <img src="/_dj/img/showroom_main.jpg" alt="배너이미지3">
+                                &nbsp;<span>쇼룸 안내</span>
+                                <span class="ment">쇼룸 위치 및 영업시간 안내</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="on" id="section_on_off">
+                <!--★ P R O C U T ★-->
+            </div>
+
+
+            <div class="on" id="section_on_off">
+                <!--★ S T O R Y ★-->
+                <div id="main_section_3" class="main_section">
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <div class="title scroll-fade dj-viewport motion1">
+                                    <!--------------------------------------------------------------------------------------------------
+                           ※ 타이틀 수정 - 텍스트만 변경바랍니다.
+                       --------------------------------------------------------------------------------------------------->
+                                    <h2>FALL IN FUNI</h2>
+                                    <p class="bar"></p>
+                                </div>
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                        <ul class="banner">
+                            <li class="scroll-fade dj-viewport"><a href="/shopinfo/company.html"><img
+                                        src="/_dj/img/research01.jpg"></a></li>
+                            <li class="text scroll-fade dj-viewport">
+                                <h2>매일 식탁을 연구합니다.</h2>
+                                <p class="ment">
+                                    안정성까지 고려한 디자인, 수백가지 다양한 구성을 통한 나만의 식탁,
+                                    체계적인 생산라인과 유통구조, 최적의 가격, 최고의 제품
+                                </p>
+                                <a href="/shopinfo/company.html">FALL IN FUNI</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="on" id="section_on_off">
+                <!--★ M A G A Z I N E ★-->
+                <div id="main_section_4" class="main_section">
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <div class="title scroll-fade dj-viewport motion1">
+                                    <!--------------------------------------------------------------------------------------------------
+                           ※ 타이틀 수정 - 텍스트만 변경바랍니다.
+                       --------------------------------------------------------------------------------------------------->
+                                    <h2>NEWS</h2>
+                                    <p class="bar"></p>
+                                </div>
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                        <ul>
+                            <!-- 매거진 시작 -->
+                            <div id="dj-maz" class="main_maz main_section_width">
+                                <div
+                                    class="xans-element- xans-board xans-board-listpackage-5 xans-board-listpackage xans-board-5 ">
+                                    <div class="maz_list">
+
+                                        <div
+                                            class="xans-element- xans-board xans-board-list-5 xans-board-list xans-board-5">
+                                            <!--
+                              $count = 4
+                              $product_name_cut = 30
+                              $login_page_url = /member/login.html
+                              $deny_access_url = /index.html
+                          -->
+                                            <ul>
+                                                <div class="list  scroll-fade dj-viewport xans-record-">
+                                                    <div class="inner">
+                                                        <ul>
+                                                            <li class="tumb"><a href="#none"><img
+                                                                        src="//fallinfuni.com/file_data/fallinfuni01//2022/07/15/64128f780324ef36bc52c648cf54d804.jpg"
+                                                                        onclick="location.href='/board/magazine/read.html?no=88&amp;board_no=5';"></a>
+                                                            </li>
+                                                            <li class="bor subject"><a
+                                                                    href="/board/magazine/read.html?no=88&amp;board_no=5">하남쇼룸
+                                                                    photo spot 인생샷 찍기 도전!</a></li>
+                                                            <li class="bor con"><a
+                                                                    href="/board/magazine/read.html?no=88&amp;board_no=5">&#xFEFF;안녕하세요!특별한
+                                                                    일상의 시작나를 위한 감성디자인 가구 '폴인퍼니' 입니다😍&nbsp;인별그램 스토리가
+                                                                    얼어있으신가요?깨톡 프로필 1년이상 쓰고 계신가요?폴인퍼니 하남 쇼룸에서 인생샷 건지기
+                                                                    도전해보세요📸&nbsp;7월 19일 라이브에서는폴인퍼니 하남 쇼룸의 포토 스팟과 감성 가구들
+                                                                    소개해드릴게요🤍 ✨라이브 구매 시 만나볼 수 있는 혜택!✨&nbsp;🎁 즉시할인스토어찜
+                                                                    5,000 / 소식알림 2,000🎁 구매인증이벤트추첨을 통해 3명, 백화점상품권 1만원
+                                                                    선물🎁 소통왕이벤트소통왕 3명, 스타벅스 커피쿠폰 증정!📺&nbsp;7월 19일(화) 오전
+                                                                    11시[하남 쇼룸 photo spot에서 인생샷 찍기! 도전?]90분 라이브로
+                                                                    준비했습니다👍&nbsp;🔔소식알림 + 스토어찜👈&nbsp;하시고라이브혜택
+                                                                    받아가세요!</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="list  scroll-fade dj-viewport xans-record-">
+                                                    <div class="inner">
+                                                        <ul>
+                                                            <li class="tumb"><a href="#none"><img
+                                                                        src="//fallinfuni.com/file_data/fallinfuni01//2022/07/11/f17e8aff061d40e7ef93d5cdb7027fe5.jpg"
+                                                                        onclick="location.href='/board/magazine/read.html?no=87&amp;board_no=5';"></a>
+                                                            </li>
+                                                            <li class="bor subject"><a
+                                                                    href="/board/magazine/read.html?no=87&amp;board_no=5">원목
+                                                                    감성 가구 맛집은 어디. 폴인퍼니!</a></li>
+                                                            <li class="bor con"><a
+                                                                    href="/board/magazine/read.html?no=87&amp;board_no=5">&#xFEFF;안녕하세요!네이버
+                                                                    랭킹 1위 식탁 브랜드'폴인퍼니' 입니다😍&nbsp;7월12일 오전 11시 라이브는폴인퍼니
+                                                                    x 네이버 리빙 슈퍼세일위크&nbsp;행사 기간에 찾아옵니다💙&nbsp;원목감성가구 맛집은
+                                                                    어디? 폴인퍼니!따스함 + 내추럴한 매력을 듬뿍 담은감성 원목 가구들을 최대 75% 할인율로
+                                                                    소개해드립니다!✨라이브 구매 시 만나볼 수 있는 혜택!✨&nbsp;🎁 즉시할인스토어찜
+                                                                    5,000 / 소식알림 2,000🎁 구매인증이벤트추첨을 통해 3명, 백화점상품권 1만원
+                                                                    선물🎁 소통왕이벤트소통왕 3명, 스타벅스 커피쿠폰 증정!📺&nbsp;7월 12일(화) 오전
+                                                                    11시[원목 감성 가구 찾고있다면? 폴인퍼니로 오세요!]90분 라이브로
+                                                                    준비했습니다👍&nbsp;🔔소식알림 + 스토어찜👈&nbsp;하시고라이브혜택
+                                                                    받아가세요!</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="list  scroll-fade dj-viewport xans-record-">
+                                                    <div class="inner">
+                                                        <ul>
+                                                            <li class="tumb"><a href="#none"><img
+                                                                        src="//fallinfuni.com/file_data/fallinfuni01//2022/07/07/85ff4de9fd3fcbf426000bb4a4bc2ad6.jpg"
+                                                                        onclick="location.href='/board/magazine/read.html?no=86&amp;board_no=5';"></a>
+                                                            </li>
+                                                            <li class="bor subject"><a
+                                                                    href="/board/magazine/read.html?no=86&amp;board_no=5">7/8(금)오전11시
+                                                                    '소통한' 폴인퍼니의 LIVE SHOP #15</a></li>
+                                                            <li class="bor con"><a
+                                                                    href="/board/magazine/read.html?no=86&amp;board_no=5">안녕하세요!네이버
+                                                                    랭킹 '1위' 식탁 브랜드&nbsp;‘폴인퍼니’&nbsp;입니다! 😊‘소통한' 폴인퍼니의
+                                                                    LIVE SHOP은‘100% 시청자 소통’으로 진행됩니다!💕감성가구&nbsp;어디서 사는지
+                                                                    궁금해?폴인퍼니한테 물어봐~‘소통한’ 폴인퍼니의 LIVE SHOP #15✨라이브 구매 시
+                                                                    만나볼 수 있는 혜택!✨&nbsp;🎁 즉시할인스토어찜 5,000 / 소식알림 2,000🎁
+                                                                    구매인증이벤트추첨을 통해 3명, 백화점상품권 1만원 선물🎁 소통왕이벤트소통왕3명, 스타벅스
+                                                                    커피쿠폰 증정!📺&nbsp;7월 8일(금) 오전 11시['소통한' 폴인퍼니의 LIVE
+                                                                    SHOP #15]🔔소식알림 + 스토어찜👈&nbsp;하시고🎁라이브혜택
+                                                                    받아가세요!🔔&nbsp;소식알림 + 스토어찜 하시고&nbsp;🎁 라이브 혜택
+                                                                    꼭받아가세요!!가구 쇼핑은 언제나폴인러브 + 퍼니처 ‘폴인퍼니’와 함께💕&nbsp;</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="list  scroll-fade dj-viewport xans-record-">
+                                                    <div class="inner">
+                                                        <ul>
+                                                            <li class="tumb"><a href="#none"><img
+                                                                        src="//fallinfuni.com/file_data/fallinfuni01//2022/07/04/0bd44664e8f5c5106b0c4bd6827db442.jpg"
+                                                                        onclick="location.href='/board/magazine/read.html?no=85&amp;board_no=5';"></a>
+                                                            </li>
+                                                            <li class="bor subject"><a
+                                                                    href="/board/magazine/read.html?no=85&amp;board_no=5">💗소파가
+                                                                    궁금해⁉ 하남 쇼룸으로 오세요💗</a></li>
+                                                            <li class="bor con"><a
+                                                                    href="/board/magazine/read.html?no=85&amp;board_no=5">&#xFEFF;안녕하세요!네이버
+                                                                    랭킹 1위 식탁브랜드'폴인퍼니'입니다7월5일(화) 오전 11시 LIVE에서는가.잘.알.
+                                                                    폴인퍼니의 신상 소파를 보여드립니다💙당신의 일상에 휴식을 더해줄반려가구&nbsp;소파
+                                                                    보러오세요!!✨라이브 구매 시 만나볼 수 있는 혜택!✨&nbsp;🎁 즉시할인스토어찜
+                                                                    5,000 / 소식알림 2,000🎁 구매인증이벤트추첨을 통해 3명, 백화점상품권 1만원
+                                                                    선물🎁 소통왕이벤트소통왕3명, 스타벅스 커피쿠폰 증정!📺&nbsp;7월 5일(화) 오전
+                                                                    11시[폴인퍼니 하남 쇼룸 라이브로 구경하자!]90분 라이브로
+                                                                    준비했습니다👍&nbsp;🔔소식알림 + 스토어찜👈&nbsp;하시고🎁라이브혜택
+                                                                    받아가세요!&nbsp;</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="more_btn"><a href="/board/magazine/list.html?board_no=5">게시물 더보기</a></p>
+                            </div>
+                        </ul><!-- 매거진 끝 -->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="on" id="section_on_off">
+                <!--★ M U M U  T V ★-->
+                <div id="main_section_5" class="main_section main_section_width">
+                    <div class="inner">
+                        <ul>
+                            <li>
+                                <div class="title scroll-fade dj-viewport motion1">
+                                    <!--------------------------------------------------------------------------------------------------
+                           ※ 타이틀 수정 - 텍스트만 변경바랍니다.
+                       --------------------------------------------------------------------------------------------------->
+                                    <h2><a href="https://www.youtube.com/channel/UCYzd7GTqb5f8DONuZQPR16A"
+                                            target="_blank"> FALL IN FUNI<p class="bar"></p></a></h2>
+                                    <p class="ment"><a href="https://www.youtube.com/channel/UCYzd7GTqb5f8DONuZQPR16A"
+                                            target="_blank">폴인퍼니 유튜브 채널</a></p>
+                                </div>
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                        <ul>
+                            <!--------★ 동영상 출력 영역 ★---------------------------------------------------------------------------------------------------------------------------------------------------
+   
+               ※ 아래 소스 중 SQ81QFF0toE 에 해당 하는 유튜브 코드 부분만 변경 바랍니다.
+               ※ 유튜브 채널에서 "공유하기" 클릭 후 나오는 다음 주소 중 https://youtu.be/SQ81QFF0toE  "SQ81QFF0toE" 에 해당 하는 코드만 입력하시면 됩니다.
+   
+             ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                            <div class="embed-container"><iframe
+                                    src="https://www.youtube.com/embed//4s6l0GLqDl0?autoplay=1&amp;mute=1&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;loop=1&amp;start=3&amp;playlist=4s6l0GLqDl0"
+                                    frameborder="0" allowfullscreen=""></iframe></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+        <!-- 하단 영역 -->
+
+
+
+        <!----------------------------------------------------------------------------------------------------------------------
+   
+     ※ SNS 아이콘 
+     ※ 표시된 이 외 아이콘 사용 원하실 경우 아래 주석 제거 후 사용하시면 됩니다. 
+     ※ 카카오플친과 네이버 톡톡의 경우 https://pf.kakao.com/test 와 같은 주소 부분만 변경하시면 됩니다.
+   
+   ------------------------------------------------------------------------------------------------------------------------>
+
+        <div id="scroll_sns_icon">
+            <ul>
+                <!-- 카카오채널 바뀐 아이콘 파일명 scroll_sns_icon_kakaochannel.png -->
+                <!---li><a href="#none" onclick="window.open('https://talk.naver.com/ct/wcdlxx','window','location=no, directories=no,resizable=no,status=no,toolbar=no,menubar=no, width=500,height=780,left=0, top=0, scrollbars=yes');"><img src="/_dj/img/scroll_sns_icon_kakaoplus.png" alt="카카오채널" /></a></li!--->
+                <li><a href="https://www.instagram.com/fallinfuni/" target="_blank"><img
+                            src="/_dj/img/scroll_sns_icon_insta.png" alt="인스타그램"></a></li>
+
+                <!---li><a href="https://facebook.com" target="_blank"><img src="/_dj/img/scroll_sns_icon_facebook.png" alt="페이스북" /></a></li!--->
+
+                <li><a href="https://www.youtube.com/channel/UCYzd7GTqb5f8DONuZQPR16A" target="_blank"><img
+                            src="/_dj/img/scroll_sns_icon_youtube.png" alt="유튜브"></a></li>
+
+                <li><a href="#none"
+                        onclick="window.open('https://talk.naver.com/ct/wcdlxx','window','location=no, directories=no,resizable=no,status=no,toolbar=no,menubar=no, width=500,height=600,left=0, top=0, scrollbars=yes');"><img
+                            src="/_dj/img/scroll_sns_icon_navertalk.png" alt="네이버톡톡"></a></li>
+
+                <li><a href="https://blog.naver.com/fallinfuni" target="_blank"><img
+                            src="/_dj/img/scroll_sns_icon_naverblog.png" alt="네이버블로그"></a></li>
+
+
+
+            </ul>
+        </div>
+
+        <!----------------------------------------------------------------------------------------------------------------------
+   
+     ※ 위/아래 스크롤 아이콘
+   
+   ------------------------------------------------------------------------------------------------------------------------>
+
+        <div id="top_top"><img src="/_dj/img/scroll_icon_01.png" alt="스크롤-업!"></div>
+        <div id="bottom_bottom"><img src="/_dj/img/scroll_icon_02.png" alt="스크롤-다운!"></div>
+
+
+
+
+
+        <div id="footer">
+            <div class="xans-element- xans-layout xans-layout-footer footer_start ">
+                <ul class="inner">
+                    <div class="cs">
+
+                        <!----------------------------------------------------------------------------------------------------------------------
+   
+              ※ 하단 고객센터
+   
+           ------------------------------------------------------------------------------------------------------------------------>
+                        <div class="cs_left">
+                            <ul>
+                                <li class="title">
+                                    C/S<span></span>
+                                </li>
+                            </ul>
+                            <ul class="cs_info">
+                                <li class="tel">
+                                    1577-4085
+                                </li>
+                                <li class="tel_time">
+                                    AM 10:00 - PM 5:30 <span>(주말 및 공휴일 휴무)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!----------------------------------------------------------------------------------------------------------------------
+   
+              ※ 상점관리 > 기본정보관리 > 내 쇼핑몰 정보에 입력한 내용이 노출됩니다.
+   
+           ------------------------------------------------------------------------------------------------------------------------>
+                        <div class="company_pg">
+                            <ul>
+                                <li class="title">COMPANY</li>
+                            </ul>
+                            <div class="inner2">
+                                <li class="info">
+                                    <span>상호 <span>폴인퍼니</span></span> <span>대표 <span class="han">안영남</span></span>
+                                    <span>사업자등록번호 <span>845-88-01147</span></span> <br><span>통신판매업 신고
+                                        <span>2019-용인처인-0760</span></span><span> <span><a href="#none"
+                                                onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=8458801147', 'bizCommPop', 'width=750, height=950;');return false;">[사업자정보확인]</a></span></span>
+                                    <br><span>전화 <span>1577-4085</span></span> <span>주소 <span> 경기도 하남시 검단산로 349-37 (창우동)
+                                            폴인퍼니, 2~4층</span></span> <br><span>개인정보관리책임자 <span>민수원
+                                            (fallinfuni@naver.com)</span></span><br>
+                                </li>
+                            </div>
+                        </div>
+
+                        <!----------------------------------------------------------------------------------------------------------------------
+   
+             ※ 하단 은행정보
+   
+           ------------------------------------------------------------------------------------------------------------------------>
+                        <div class="cs_right">
+                            <ul>
+                                <li class="title">BANK</li>
+                            </ul>
+                            <ul class="account">
+                                <li class="info">
+                                    <span class="han">기업은행</span> <span class="num">144-152953-04-047</span><br><span
+                                        class="name">예금주 <strong> (주) 폴인퍼니</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/_dj/js/scroll-transition-fade.js"></script>
+
+
+    <!-- 참고: 결제를 위한 필수 영역 -->
+    <div id="progressPaybar" style="display:none;">
+        <div id="progressPaybarBackground" class="layerProgress"></div>
+        <div id="progressPaybarView">
+            <div class="box">
+                <p class="graph">
+                    <span><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif"
+                            alt="현재 결제가 진행중입니다."></span>
+                    <span><img src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt=""></span>
+                </p>
+                <p class="txt">
+                    본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br>
+                    주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- //참고 -->
+
+
+    <span itemscope="" itemtype="http://schema.org/Organization">
+        <link itemprop="url" href="https://fallinfuni.com">
+    </span>
+
+    <script>
+        try {
+            // Account ID 적용
+            if (!wcs_add) var wcs_add = {};
+            wcs_add["wa"] = "s_4ab8225dee49";
+
+            // 마일리지 White list가 있을 경우
+            wcs.mileageWhitelist = ["fallinfuni01.cafe24.com", "www.fallinfuni01.cafe24.com", "m.fallinfuni01.cafe24.com", "fallinfuni.com", "www.fallinfuni.com", "m.fallinfuni.com"];
+
+            // 네이버 페이 White list가 있을 경우
+            wcs.checkoutWhitelist = ["fallinfuni01.cafe24.com", "www.fallinfuni01.cafe24.com", "m.fallinfuni01.cafe24.com", "fallinfuni.com", "www.fallinfuni.com", "m.fallinfuni.com"];
+
+            // 레퍼러 (스크립트 인젠션 공격 대응 strip_tags) ECQAINT-15101
+            wcs.setReferer("");
+
+            // 유입 추적 함수 호출
+            wcs.inflow("fallinfuni.com");
+
+            // 로그수집
+            wcs_do();
+        } catch (e) { };
+    </script>
+
+    <script type="text/javascript" src="/ind-script/i18n.php?lang=ko_KR&amp;domain=front&amp;v=2207201121"
+        charset="utf-8"></script>
+
+    <script
+        src="/ind-script/optimizer.php?filename=zVjbcuM2DH2P9drvULPtdPqaON3tTpPZTJqdfYYoSEZEEiwvSbxfX0j2tnGzknVxZjqZsRWa5wAEDwGI-YYN5ufvfF55MPjEvsk9Bk5eYf4Qcjr_1WYP4Yd8aF4iB6rJH_5K6Lf7r5-yX7IfJyLxOaK3oMN-IFPMDeFSluT1rCVkqLLKzoZaVmwrTSrOojjPfpa_Wcbl18j-P3FznmvBH-xuCREjyQQjs2zMUd10D18obu6_XkGEzJCdwKOpEBTey_NxVHCebKxG0LNKrVvv2Zs12-hZa_THcbc6hQvnLj2V9Qh_UiR9fFbluYvUWWAtCLZnkd2ZJotnBVg7xq8dhWJj2I6d_QxWTqMVaTuPcbyVDhfROC378n0QOJffcEEa87sX-J1_A1HpwRkukwyFJ3LTDFbJqjag7bwyybExvSIeyzDghEg1_7w7PS8pNHzdaoZyEsikCK3dT0VA_9i3OT1gx3pbkR4tvRIrSDq2IQgGfLwcUF076c8NuwOD7zuaP6ABzpv285aeUQ-dkgGadaeSz4Mi6YHeYYUercJ18u339taTmu5BQPBqMynkEapq-zq1TS8tRU0d6P9R6EpJuzaIDsNSJoRAtl7KYjBC2RaRaTxOp5okaz2CJoGz_8b3z0AmDxAW07YO2zK8phcGJ1HEt7OwQe3wzdexAVu-qpSnNCC5juQkvRm_5MV4sjBpViAFo-HjmfZfDybnQymzNfvtNYXYD75k8OUBWkazoh2dB0pKzQMWEpVmHlS3SzRdFT4eUQMW6rbRTAFXpYd6oLDvpr40-oTiZz0px38rKnmQjVq5_tIyCq_2_60q6UEhLvXkVDTjWtZNNFraZ4qEYVLYIWyt2n3Oxhk0xVB7cgT-yZfolY2zCS4hNBiXM7jh5mQUx-2-LZ3LsuYkdWnJWm7ksEI9fx1X6DjQfPtfKGyGU-MIAsVpQQg8KlwAv-vg9xxBrxf50Sl7vqDQYkVLRX0N2wU-fPBQzpfSRYosOZBURyPl9Gm-quV9iG7ZJTefQip2g_sDumxjD6gWif2aHlGTbfquCcaq7HdqL4S2J9DrnukeipPwfIxoFkWoI7uS9wzSH23F8zOrBjJQaFzgkYO48axxNaJ7PLbxvTcQPWA3o7LsKvNKGisa0Ndv-7e6w4uWrteVn4Py5OJEdHtbkF-0PbRD1d1pVTBUW79LcpBKnFuPvE3znLp7sL8B&amp;type=js&amp;k=bd82141f6f993077454b13a6ad9e6d235343ef09&amp;t=1658136771"></script>
+    <script
+        src="/ind-script/optimizer.php?filename=rc7BDcIwDEDRO-HKHAYxChOkiWmcOnGoY1C3pyCxAO3tn54-JCkIGJwpzgp3z0z1bpXOF2g2MAWXemHQiC6i0lhBJ6pXcDFDVoj5kPWY9QT_QuwXsQ6DVwof8RubxBUJUorUrUqRaIy_w4dRmNyT8LWvG3zHUeZlX7UYd9Ik7ZaoNarjyr8B&amp;type=js&amp;k=b1ee1718ddcdb6710fc8a6dc31af388839c36e58&amp;t=1624861897&amp;user=T"></script>
+    <script type="text/javascript">
+        CAFE24.MOBILE_WEB = false; var mobileWeb = CAFE24.MOBILE_WEB;
+        try {
+            // isSeqNoKeyExpiretime
+            function isSeqNoKeyExpiretime(iExpiretime) {
+                var sDate = new Date();
+                var iNow = Math.floor(sDate.getTime() / 1000);
+                // 유효시간 확인
+                if (iExpiretime > iNow) {
+                    return false;
                 }
-
-                if(categoryList[i].oemodm == 'Y') {
-                    categoryOemodm = categoryOemodm + '<li>';
-                    categoryOemodm = categoryOemodm + '<a href="' + categoryOemodmUrl + '?firstCategory=' + categoryList[i].cate + '" class="dropdown-item">' + categoryList[i].cateName + '</a>';
-                    categoryOemodm = categoryOemodm + makeCategory(categoryList[i], categoryList, "OEMODM", "");
-                    categoryOemodm = categoryOemodm + '</li>';
-
-                    allCategoryOemodm = allCategoryOemodm + '<div>';
-                    allCategoryOemodm = allCategoryOemodm + '<a href="' + categoryOemodmUrl + '?firstCategory=' + categoryList[i].cate + '" class="dropdown-item search-child-category">' + categoryList[i].cateName + '</a>';
-                    allCategoryOemodm = allCategoryOemodm + '</div>';
-
-                    allCategoryOemodm2 = allCategoryOemodm2 + '<div>';
-                    allCategoryOemodm2 = allCategoryOemodm2 + '<a href="#" class="dropdown-item" onclick="getCateUid(\''+categoryList[i].cate+'\', \''+categoryList[i].cateName+'\');"><b>' + categoryList[i].cateName + '</b></a>';
-                    allCategoryOemodm2 = allCategoryOemodm2 + '</div>';
-
-                    categoryOemodmMenu = categoryOemodmMenu + '<div class="col-sm-2 search-child-category" data-cate="' + categoryList[i].cate + '">';
-                    categoryOemodmMenu = categoryOemodmMenu + categoryList[i].cateName;
-                    categoryOemodmMenu = categoryOemodmMenu + '</div>';
+                return true;
+            }
+            function isUseLoginKeeping() {
+                // 디바이스 확인
+                if (EC_MOBILE_DEVICE === false) {
+                    return;
                 }
-            }
-
-            categoryMold = categoryMold + '</ul>';
-            categoryCompany = categoryCompany + '</ul>';
-            categoryOemodm = categoryOemodm + '</ul>';
-
-            categoryMoldMenu = categoryMoldMenu + categoryMoldMenuLeaf + '</div></div>';
-
-            categoryCompanyMenu = categoryCompanyMenu + categoryCompanyMenuLeaf + '</div></div>';
-
-            categoryOemodmMenu = categoryOemodmMenu + '</div></div>';
-
-            $("#mold_category").html(categoryMold);
-            $("#company_category").html(categoryCompany);
-            $("#oemodm_category").html(categoryOemodm);
-            
-            $("#mold_category_all").html(allCategoryMold + allCategoryMoldLeaf);
-            $("#mold_category_all2").html(allCategoryMold2 + allCategoryMoldLeaf2);
-            $("#company_category_all").html(allCategoryCompany);
-            $("#oemodm_category_all").html(allCategoryOemodm);
-            $("#oemodm_category_all2").html(allCategoryOemodm2);
-
-            $("#mold_category_menu").html(categoryMoldMenu);
-            $("#company_category_menu").html(categoryCompanyMenu);
-            $("#oemodm_category_menu").html(categoryOemodmMenu);
-        });
-    });
-
-    /* 사용자 메뉴 하위 메뉴 구성 ( 메뉴 ) */
-    function makeCategory(category, categoryList, kind, banner) {
-        var htmlStr = "";
-        var moveUrl = "";
-
-        if(category.type == 'DIRECTORY') {
-
-            if(kind == 'MOLD') {
-                moveUrl = categoryMoldUrl;
-            } else if(kind == 'COMPANY') {
-                moveUrl = categoryCompanyUrl;
-            } else {
-                moveUrl = categoryOemodmUrl;
-            }
-            
-            htmlStr = htmlStr + '<ul class="child-category">';
-            htmlStr = htmlStr + '<div>';
-            htmlStr = htmlStr + '<div class="child-div" style="float: left; width:170px;">';
-            for(var i=0; i<categoryList.length; i++) {
-                if(category.cate == categoryList[i].pcate) {
-                    htmlStr = htmlStr + '<li>';
-                    htmlStr = htmlStr + '<a href="' + moveUrl + '?firstCategory=' + category.cate + '&secondCategory=' + categoryList[i].cate + '" class="dropdown-item" style="padding-top:6px; color:#141414; font-size: 13px; color: #7d7d7d;">' + categoryList[i].cateName + '</a>';
-
-                    htmlStr = htmlStr + makeCategory(categoryList[i], categoryList, kind, banner);
-
-                    htmlStr = htmlStr + '</li>';
+                // 로그인 여부
+                if (sessionStorage.getItem('member_' + CAFE24.SDE_SHOP_NUM) !== null) {
+                    return;
                 }
-            }
-            htmlStr = htmlStr + '</div>';
-
-            if(!(typeof banner == "undefined" || banner == null || banner == "" || banner == "!")) {
-                htmlStr = htmlStr + '<div class="menu-and-banner-right" style="float: left; border-left: 0.5px solid #ffffff;">';
-                htmlStr = htmlStr + categoryBannerImage(banner);
-                htmlStr = htmlStr + '</div>';
-            }
-            htmlStr = htmlStr + '</div>';
-            htmlStr = htmlStr + '</ul>';
-        }
-        
-        return htmlStr;
-    }
-
-    /* 사용자 메뉴 하위 메뉴 구성 ( 전체 ) */
-    function makeAllCategory(category, categoryList, kind) {
-        var htmlStr = "";
-        var moveUrl = "";
-
-        if(kind == 'MOLD') {
-            moveUrl = categoryMoldUrl;
-        } else if(kind == 'COMPANY') {
-            moveUrl = categoryCompanyUrl;
-        } else {
-            moveUrl = categoryOemodmUrl;
-        }
-        
-        htmlStr = htmlStr + '<ul>';
-        for(var i=0; i<categoryList.length; i++) {
-            if(category.cate == categoryList[i].pcate) {
-                htmlStr = htmlStr + '<li>';
-                htmlStr = htmlStr + '<a href="' + moveUrl + '?firstCategory=' + category.cate + '&secondCategory=' + categoryList[i].cate + '" class="dropdown-item search-child-category">' + categoryList[i].cateName + '</a>';
-                htmlStr = htmlStr + '</li>';
-            }
-        }
-        htmlStr = htmlStr + '</ul>';
-        
-        return htmlStr;
-    }
-
-    /* 사용자 메뉴 하위 메뉴 구성 ( 전체 ) */
-    function makeAllCategory2(category, categoryList, kind) {
-        var htmlStr = "";
-        var moveUrl = "";
-
-        if(kind == 'MOLD') {
-            moveUrl = categoryMoldUrl;
-        } else if(kind == 'COMPANY') {
-            moveUrl = categoryCompanyUrl;
-        } else {
-            moveUrl = categoryOemodmUrl;
-        }
-        
-        htmlStr = htmlStr + '<ul>';
-        for(var i=0; i<categoryList.length; i++) {
-            if(category.cate == categoryList[i].pcate) {
-                htmlStr = htmlStr + '<li style="width: 130px;">';
-                htmlStr = htmlStr + '<a href="#" class="dropdown-item" onclick="getPcateUid(\''+category.cate+'\', \''+category.cateName+'\', \''+categoryList[i].cate+'\', \''+categoryList[i].cateName+'\');">' + categoryList[i].cateName + '</a>';
-                htmlStr = htmlStr + '</li>';
-            }
-        }
-        htmlStr = htmlStr + '</ul>';
-        
-        return htmlStr;
-    }
-
-    /* 사용자 메뉴 하위 메뉴 구성 ( 메뉴 ) */
-    function makeCategoryMenu(category, categoryList, kind) {
-        var htmlStr = "";
-        var moveUrl = "";
-
-        if(category.type == 'DIRECTORY') {
-
-            if(kind == 'MOLD') {
-                moveUrl = categoryMoldUrl;
-            } else if(kind == 'COMPANY') {
-                moveUrl = categoryCompanyUrl;
-            } else {
-                moveUrl = categoryOemodmUrl;
-            }
-            
-            htmlStr = htmlStr + '<div class="col-sm-10">';
-            htmlStr = htmlStr + '<div class="row">';
-
-            for(var i=0; i<categoryList.length; i++) {
-                if(category.cate == categoryList[i].pcate) {
-                    htmlStr = htmlStr + '<div class="col-sm-2 search-child-category" data-cate="' + categoryList[i].cate + '">';
-                    htmlStr = htmlStr + categoryList[i].cateName;
-                    htmlStr = htmlStr + '</div>';
+                var iSeqnoExpiretime = localStorage.getItem('seq_no_key_expiretime');
+                var iSeqNoKey = localStorage.getItem('seq_no_key');
+                // 유효시간, key 값 확인
+                if (iSeqnoExpiretime === null || iSeqNoKey === null) {
+                    return;
                 }
+                if (isSeqNoKeyExpiretime(iSeqnoExpiretime) === false) {
+                    return;
+                }
+                useLoginKeepingSubmit();
             }
-
-            htmlStr = htmlStr + '</div>';
-            htmlStr = htmlStr + '</div>';
-        }
-        
-        return htmlStr;
-    }
-
-    /* 좌측/우측 배너 */
-    $.post("/user/banner.json", function (banner) {
-        var quickBanner96 = "";
-        for(var i=0; i<banner["96"].length; i++) {
-            quickBanner96 = quickBanner96 + '<div class="mb-1 banner-info" data-banner-locate="BANNER1" data-banner-posi="96" style="min-width: 86px;'
-                                          + ' data-banner-uid="' + banner["96"][i].uid + '" '
-                                          + ' data-company-uid="' + banner["96"][i].company.uid + '" '
-                                          + '" data-banner-link="' + banner["96"][i].bannerLink + '"> '
-                                          + '<img src="/data/BannerImg/' + banner["96"][i].bannerImg + '" style="width: 86px; margin-left: -11px;"></div>';
-        }
-        $(".quick-menu .banner-area").html(quickBanner96);
-
-        var banner1_7 = "";
-        for(var i=0; i<2; i++) {
-            banner1_7 = banner1_7 + '<div class="mb-1 banner-info" data-banner-locate="BANNER1" data-banner-posi="7" '
-                                  + ' data-banner-uid="' + banner["7"][i].uid + '" '
-                                  + ' data-company-uid="' + banner["7"][i].company.uid + '" '
-                                  + ' data-banner-link="' + banner["7"][i].bannerLink + '"> '
-                                  + '<img src="/data/BannerImg/' + banner["7"][i].bannerImg + '" style="width: 86px;"></div>';
-        }
-
-        $(".div-banner7").html(banner1_7);
-    });
-
-    /* 검색창 배너 */
-    $.post("/user/searchBanner.json", function (banner) {
-        var searchBanner = "";
-        for(var i=0; i<banner["0"].length; i++) {
-            searchBanner = searchBanner + '<div class="col-lg-4 col-md-4 col-sm-4 mt-3 banner-info" data-banner-locate="BANNER7" data-banner-posi="1" '
-                                        + 'data-banner-uid="' + banner["0"][i].uid + '" '
-                                        + 'data-company-uid="' + banner["0"][i].company.uid + '" '
-                                        + 'data-banner-link="' + banner["0"][i].bannerLink + '"> '
-                                        + '<img src="/data/BannerImg/' + banner["0"][i].bannerImg + '"style="max-width:110%;"></div>';
-        }
-
-        $(".search-window-banner").html(searchBanner);
-    });
-
-    $(document).ready(function() {
-        /* 마우스 우클릭 차단 */
-        $(document).bind("contextmenu", function(e) {
-            return false;
-        });
-        /* 선택 차단 */
-        $(document).bind('selectstart',function() {
-            return false;
-        });
-        /* 드래그 차단 */
-        $(document).bind('dragstart',function() {
-            return false;
-        });
-
-        if(window.location.href.indexOf("user/company") == -1) {
-            setCookie("companyViewProductParams", "", -1);
-        }
-        
-        $('#carouselExampleIndicators1').carousel({
-            interval: 2000
-        });
-
-        /* 배너 클릭 시 처리 START */
-        $(document).on("click", ".banner-info", function() {
-            $.post("/user/stat/statBanner.json", {
-                bannerUid : $(this).attr("data-banner-uid"),
-                bannerLocate : $(this).attr("data-banner-locate"),
-                bannerPosi : $(this).attr("data-banner-posi")
-            });
-
-            var bannerLink = $(this).attr("data-banner-link");
-            if (bannerLink) {
-                window.open(bannerLink);
-            } else {
-                location.href = "/user/company/companyInfo?companyFlag=3&companyUid=" + $(this).attr("data-company-uid");
+            function findGetParamValue(paramKey) {
+                var result = null,
+                    tmp = [];
+                location.search.substr(1).split('&').forEach(function (item) {
+                    tmp = item.split('=');
+                    if (tmp[0] === paramKey) result = decodeURIComponent(tmp[1]);
+                });
+                return result;
             }
-        });
-        /* 배너 클릭 시 처리 END */
-
-        /* 상세보기 클릭 시 처리 START */
-        $(document).on("click", ".product-info", function() {
-            var viewPath = "";
-            if(document.location.href.indexOf("/freemold/search") > -1) {
-                viewPath = "프리몰드";
-            } else if(document.location.href.indexOf("/newProduct/search") > -1) {
-                viewPath = "NEW";
-            } else if(document.location.href.indexOf("/user/search") > -1) {
-                viewPath = "검색";
-            } else if(document.location.href.indexOf("/freemold/view") > -1) {
-                viewPath = "프리몰드 제품상세";
-            } else if(document.location.href.indexOf("/company/companyProduct") > -1) {
-                viewPath = "업체 생산제품";
-            } else if(document.location.href.indexOf("/company/companyProductView") > -1) {
-                viewPath = "업체 생산제품 상세";
+            function useLoginKeepingSubmit() {
+                var iSeqnoExpiretime = localStorage.getItem('seq_no_key_expiretime');
+                var iSeqNoKey = localStorage.getItem('seq_no_key');
+                var oForm = document.createElement('form');
+                oForm.method = 'post';
+                oForm.action = '/exec/front/member/LoginKeeping';
+                document.body.appendChild(oForm);
+                var oSeqNoObj = document.createElement('input');
+                oSeqNoObj.name = 'seq_no_key';
+                oSeqNoObj.type = 'hidden';
+                oSeqNoObj.value = iSeqNoKey;
+                oForm.appendChild(oSeqNoObj);
+                oSeqNoObj = document.createElement('input');
+                oSeqNoObj.name = 'seq_no_key_expiretime';
+                oSeqNoObj.type = 'hidden';
+                oSeqNoObj.value = iSeqnoExpiretime;
+                oForm.appendChild(oSeqNoObj);
+                var returnUrl = findGetParamValue('returnUrl');
+                if (returnUrl == '' || returnUrl == null) {
+                    returnUrl = location.pathname + location.search;
+                }
+                oSeqNoObj = document.createElement('input');
+                oSeqNoObj.name = 'returnUrl';
+                oSeqNoObj.type = 'hidden';
+                oSeqNoObj.value = returnUrl;
+                oForm.appendChild(oSeqNoObj);
+                oForm.submit();
             }
-
-            $.post("/user/stat/statProduct.json", {
-                prodUid : $(this).parent().attr("data-product-uid"),
-                memberUid : $(this).parent().attr("data-company-uid"),
-                viewPath : viewPath
-            });
-
-            $("input[name=prodUid]").val($(this).parent().attr("data-product-uid"));
-
-            $("#form-freemold").attr("action", "/user/freemold/view");
-            $("#form-freemold").attr("method", "post");
-            $("#form-freemold").submit();
-        });
-        /* 상세보기 클릭 시 처리 END */
-
-        /* 업체정보 클릭 시 처리 START */
-        $(document).on("click", ".company-info", function() {
-            var viewPath = "";
-            if(document.location.href.indexOf("/freemold/search") > -1) {
-                viewPath = "프리몰드";
-            } else if(document.location.href.indexOf("/oemodm/index") > -1) {
-                viewPath = "OEM/ODM";
-            } else if(document.location.href.indexOf("/store/search") > -1) {
-                viewPath = "입점사";
-            } else if(document.location.href.indexOf("/newProduct/search") > -1) {
-                viewPath = "NEW";
-            } else if(document.location.href.indexOf("/user/search") > -1) {
-                viewPath = "검색";
-            } else if(document.location.href.indexOf("/freemold/view") > -1) {
-                viewPath = "프리몰드 제품상세";
-            } else if(document.location.href.indexOf("/company/companyProductView") > -1) {
-                viewPath = "업체 생산제품 상세";
-            }
-
-            $.post("/user/stat/statCompany.json", {
-                companyUid : $(this).attr("data-company-uid"),
-                viewPath : viewPath
-            });
-
-            var bannerLink = $(this).attr("data-banner-link");
-            if (bannerLink) {
-                window.open(bannerLink);
-            } else {
-                location.href = "/user/company/companyInfo?companyFlag=3&companyUid=" + $(this).attr("data-company-uid");
-            }
-        });
-        /* 업체정보 클릭 시 처리 END */
-
-        /* 문의하기 클릭 시 처리 START */
-        $(document).on("click", ".question", function() {
-            location.href = "/user/company/companyQna?companyFlag=3&companyUid=" + $(this).attr("data-company-uid")
-                          + "&productUid=" + $(this).attr("data-product-uid");
-        });
-        /* 문의하기 클릭 시 처리 END */
-
-        /* 위로가기 버튼 클릭 시 처리 START */
-        $(document).on("click", ".top-icon", function() {
-            $('html,body').animate({scrollTop:0},600);
-        });
-        /* 우측 퀵메뉴 처리 
-        $(window).scroll(function() {
-            var scrollPosition = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-            $("#quick-menu").stop().animate({"top":scrollPosition + currentQuickMenuPosition+"px"},500);
-        });*/
-    });
-
-    function setCookie( name, value, expiredays ) { 
-      var todayDate = new Date(); 
-      todayDate.setDate( todayDate.getDate() + expiredays ); 
-      document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";" 
-    }
-
-    function getCookiePopupLayer() {
-        var cookiedata = document.cookie;
-        if(cookiedata.indexOf("banner-layer=done") < 0) {
-            $(".banner-layer").show();
-        } else {
-            $(".banner-layer").hide();
+            isUseLoginKeeping();
+        } catch (e) {
         }
-    }
-
-    function categoryBannerImage(banner) {
-        var categoryBanner = '<div>\n';
-        for(var i=0; i<banner.length; i++) {
-            categoryBanner = categoryBanner + '<div class="company-info" '
-                                            + 'data-company-uid="' + banner[i].company.uid + '" data-banner-link="' + banner[i].bannerLink + '" '
-                                            + 'style="vertical-align:middle; margin: 2px 0; border: 1px solid #ffffff00;">'
-                                            + '<img src="/data/BannerImg/' + banner[i].bannerImg + '" class="img-rounded">'
-                                            + '</div>\n';
+        var bUseElastic = false;
+        var sSearchBannerUseFlag = 'F';
+        var bIsUseSpread = false;
+        var sIsSecret = false;
+        var iBoardNo = "5";
+        var aLogData = { "log_server1": "eclog2-260.cafe24.com", "log_server2": "elg-db-svcm-045.cafe24.com", "mid": "fallinfuni01", "stype": "e", "domain": "", "shop_no": "1", "lang": "ko_KR", "ver": 2, "hash": "30c6d00fffc9ed176d53ab7c03464e60", "ca": "cfa-js.cafe24.com\/cfa.js", "etc": "" };
+        var sMileageName = '적립금';
+        var sMileageUnit = '[:PRICE:]원';
+        var sDepositName = '예치금';
+        var sDepositUnit = '원';
+        CAFE24.SHOP_CURRENCY_INFO = { "1": { "aShopCurrencyInfo": { "currency_code": "KRW", "currency_no": "410", "currency_symbol": "\uffe6", "currency_name": "South Korean won", "currency_desc": "\uffe6 \uc6d0 (\ud55c\uad6d)", "decimal_place": 0, "round_method_type": "F" }, "aShopSubCurrencyInfo": null, "aBaseCurrencyInfo": { "currency_code": "KRW", "currency_no": "410", "currency_symbol": "\uffe6", "currency_name": "South Korean won", "currency_desc": "\uffe6 \uc6d0 (\ud55c\uad6d)", "decimal_place": 0, "round_method_type": "F" }, "fExchangeRate": 1, "fExchangeSubRate": null, "aFrontCurrencyFormat": { "head": "", "tail": "\uc6d0" }, "aFrontSubCurrencyFormat": { "head": "", "tail": "" } } }; var SHOP_CURRENCY_INFO = CAFE24.SHOP_CURRENCY_INFO;
+        var EC_ASYNC_LIVELINKON_ID = '';
+        if (EC$('[async_section=before]').length > 0) {
+            EC$('[async_section=before]').addClass('displaynone');
         }
-        categoryBanner = categoryBanner + "</div>";
-
-        return categoryBanner;
-    }
-</script>
+        CAFE24.APPSCRIPT_ASSIGN_DATA = CAFE24.APPSCRIPT_ASSIGN_DATA || [{ 'src': 'https://app4you.cafe24.com/SmartPopup/tunnel/scriptTags?vs=20220117164431.1&client_id=AyPifbe9TEq8i4fmvfUgaZ', 'integrity': 'sha384-j+WLOriOo0/sb+Ho5fn6lGPknv0cW+wMxOLlx8qpy01ShkkynynGNJQ53niqAdze' }];
+        CAFE24.APPSCRIPT_SDK_DATA = CAFE24.APPSCRIPT_SDK_DATA || [];
+        var EC_APPSCRIPT_ASSIGN_DATA = CAFE24.getDeprecatedNamespace('EC_APPSCRIPT_ASSIGN_DATA');
+        var EC_APPSCRIPT_SDK_DATA = CAFE24.getDeprecatedNamespace('EC_APPSCRIPT_SDK_DATA');
+    </script>
+    <div id="modalBackpanel"></div>
+    <div id="modalContainer">
+        <iframe id="modalContent" scroll="0" scrolling="no" frameborder="0"></iframe>
+    </div><iframe
+        src="/exec/front/eclog/main/?&amp;rloc=http%3A//fallinfuni.com/&amp;rref=&amp;udim=1920*1080&amp;rserv=elg-db-svcm-045.cafe24.com&amp;cid=CIDc353f78f9f426f974c343c9bdbfecaff&amp;role_path=MAIN&amp;stype=e&amp;shop_no=1&amp;lang=ko_KR&amp;ver=2"
+        id="log_realtime" style="display: none;"></iframe>
+    <script
+        src="https://app4you.cafe24.com/SmartPopup/tunnel/scriptTags?vs=20220117164431.1&amp;client_id=AyPifbe9TEq8i4fmvfUgaZ"
+        integrity="sha384-j+WLOriOo0/sb+Ho5fn6lGPknv0cW+wMxOLlx8qpy01ShkkynynGNJQ53niqAdze"
+        crossorigin="anonymous"></script>
+    <div class="app-smart-popup" style="z-index: 2147483647; margin-left: 10px; margin-top: 10px; visibility: hidden;">
+        <div>
+            <div class="smart-popup-img"><img
+                    src="https://file.cafe24cos.com/popup-admin-live/fallinfuni01/6dea48e2-7a02-40bf-aec4-36cc9883b14a.jpeg"
+                    style="max-width: 1000px;"></div>
+        </div>
+        <div class="smart-popup-btns"><button type="button" class="smart-popup-close smart-popup-today"
+                data-popup-no="93845">오늘 하루 열지 않기</button><button class="smart-popup-close">닫기</button></div>
+    </div>
+    <div class="app-smart-popup" style="z-index: 2147483646; margin-left: 10px; margin-top: 783px; visibility: hidden;">
+        <div>
+            <div class="smart-popup-img"><img
+                    src="https://file.cafe24cos.com/popup-admin-live/fallinfuni01/6f37201c-52d2-4b92-98d4-74bf793199a5.jpeg"
+                    style="max-width: 1000px;"></div>
+        </div>
+        <div class="smart-popup-btns"><button type="button" class="smart-popup-close smart-popup-today"
+                data-popup-no="92597">오늘 하루 열지 않기</button><button class="smart-popup-close">닫기</button></div>
+    </div>
+</body>
+</html>
